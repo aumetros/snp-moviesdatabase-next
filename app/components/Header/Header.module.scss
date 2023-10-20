@@ -1,0 +1,94 @@
+.root {
+  min-height: 150px;
+  border-bottom: 1px #ffffff80 solid;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  width: 480px;
+  height: 150px;
+  background-image: url(/logo.png);
+  background-size: contain;
+}
+
+.container {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text {
+  margin: 0 0 5px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+.counter {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 10px;
+}
+
+.add-film-btn {
+  min-width: 263px;
+  min-height: 50px;
+  padding: 0;
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 52px;
+  color: #ffffff;
+  border: 0;
+  background-color: transparent;
+  position: relative;
+  transition: all 0.3s;
+  cursor: pointer;
+
+  &::before {
+    content: "добавить фильм";
+    position: absolute;
+    font-size: 16px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0;
+    transition: all 0.3s;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    border-top-style: solid;
+    border-bottom-style: solid;
+    border-top-color: rgb(255, 255, 255);
+    border-bottom-color: rgb(255, 255, 255);
+    transform: scale(0.1, 1);
+  }
+
+  &:hover::before {
+    opacity: 1;
+    transform: scale(1, 1);
+  }
+
+  &::after {
+    content: "+";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    border-radius: 10px;
+    transition: all 0.3s;
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &:hover::after {
+    opacity: 0;
+    transform: scale(0.1, 1);
+  }
+}
