@@ -1,7 +1,8 @@
 import { Open_Sans } from "next/font/google";
 import "styles/globals.css";
-import Container from "components/Container/Container";
-import Header from "components/Header/Header";
+import Container from "components/Container";
+import Header from "components/Header";
+import Footer from "components/Footer";
 
 const openSans = Open_Sans({
   weight: ["400", "500", "700"],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
         <Container>
           <Header />
           {children}
+          <Footer />
         </Container>
       </body>
     </html>
