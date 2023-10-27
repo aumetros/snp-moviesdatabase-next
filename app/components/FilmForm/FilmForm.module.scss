@@ -1,0 +1,105 @@
+@import "styles/mixins.scss";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  align-items: flex-start;
+  box-sizing: border-box;
+  color: #000000;
+}
+
+.title {
+  max-width: 410px;
+  margin: 0 auto 5px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+}
+
+.line {
+  width: 300px;
+  margin-bottom: 30px;
+  color: #000000;
+}
+
+.buttons-container {
+  display: flex;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.submit {
+  display: flex;
+  min-width: 210px;
+  min-height: 45px;
+  padding: 0;
+  margin: 20px auto 0;
+  border: 0;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  color: #ffffff;
+  background-color: #0c1526;
+  cursor: pointer;
+  transition: background-color 200ms, opacity 200ms;
+
+  &:hover {
+    background-color: #142c57;
+  }
+
+  &.inactive {
+    background-color: #a0a0a0;
+    color: #000000;
+  }
+
+  &.inactive:hover {
+    opacity: 0.8;
+    cursor: auto;
+  }
+}
+
+.delete {
+  background-color: #4f0101;
+
+  @include hoverBackgroundColor(#691010);
+}
+
+.label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.input {
+  margin-bottom: 3px;
+  padding: 0 0 5px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #e8e8e8;
+  outline: 0;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 17px;
+
+  &::placeholder {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 17px;
+    color: #a0a0a0;
+  }
+}
+
+.error {
+  min-height: 12px;
+  margin-bottom: 15px;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 12px;
+  color: #ff3055;
+}

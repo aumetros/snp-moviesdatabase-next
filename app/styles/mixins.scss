@@ -19,6 +19,14 @@
   @include hover;
 }
 
+@mixin hoverBackgroundColor($background-color) {
+  &:hover {
+    background-color: $background-color;
+  }
+
+  @include hover;
+}
+
 @mixin hoverUnderline($color: #ffffff, $margin: -3px) {
   &::after {
     content: "";
