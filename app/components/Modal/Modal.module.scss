@@ -13,7 +13,7 @@
   visibility: hidden;
   opacity: 0;
   background-color: rgba(0, 0, 0, 0.5);  
-  transition: all 0.25s, opacity 0.25s linear;
+  transition: visibility 0.25s, opacity 0.25s linear;
   
   &.opened {
     visibility: visible;
@@ -27,11 +27,16 @@
   flex-direction: column;
   width: 550px;
   padding: 30px;
+  margin: 0 10px;
   border-radius: 10px;
   align-items: center;
   box-sizing: border-box;
   background-color: #ffffff; 
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15); 
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+
+  @include mobile {
+    padding: 20px 10px
+  }
 }
 
 .close {
@@ -51,6 +56,11 @@
 
   &:hover {
     opacity: 0.7;
+  }
+
+  @include mobile {
+    top: -40px;
+    right: 0;
   }
 }
 
