@@ -11,7 +11,7 @@ export default function Header() {
         </div>
       </div>
       <div className={styles.container}>
-        <p className={styles.text}>Всего фильмов в базе данных</p>
+        <p className={styles.text}>Всего фильмов в базе данных<span className={styles['counter-mob']}>: 10</span></p>
         <span className={styles.counter}>10</span>
         <button className={styles["add-film-btn"]}></button>
       </div>

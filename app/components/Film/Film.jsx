@@ -7,7 +7,6 @@ export default function Film() {
       <p className={styles.title}>{`Титаник / (1999)`}</p>
       <div className={styles.actions}>
         <div className={styles.details} ></div>
-        <div className={styles.edit} ></div>
       </div>
     </li>
   );

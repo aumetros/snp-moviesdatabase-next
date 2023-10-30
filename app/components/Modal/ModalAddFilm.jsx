@@ -3,7 +3,7 @@ import FilmForm from "components/FilmForm";
 
 export default function ModalAddFilm() {
   return (
-    <Modal isOpen={true}>
+    <Modal isOpen={false}>
       <FilmForm
         title="Добавить новый фильм"
         name="addFilm"
