@@ -50,6 +50,11 @@
   cursor: pointer;
 
   @include hoverOpacity;
+
+  @include mobile {
+    opacity: 1;
+    pointer-events: none;
+  }
 }
 
 .edit {
@@ -63,4 +68,9 @@
   cursor: pointer;
 
   @include hoverOpacity;
+
+  @include mobile {
+    opacity: 1;
+    pointer-events: none;
+  }
 }
