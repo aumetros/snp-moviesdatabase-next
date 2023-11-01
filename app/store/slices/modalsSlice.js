@@ -33,6 +33,6 @@ const modalsSlice = createSlice({
   },
 });
 
-export const { openModal, closeModal } = filmsSlice.actions;
+export const { openModal, closeModal } = modalsSlice.actions;
 
 export default modalsSlice.reducer;

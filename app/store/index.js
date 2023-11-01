@@ -1,6 +1,8 @@
+"use client"
+
 import { configureStore } from "@reduxjs/toolkit";
-import filmsReducer from "./filmsSlice.js";
-import modalsReducer from "./modalsSlice.js";
+import filmsReducer from "./slices/filmsSlice.js";
+import modalsReducer from "./slices/modalsSlice.js";
 
 export default configureStore({
   reducer: {

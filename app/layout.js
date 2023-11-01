@@ -4,6 +4,7 @@ import Container from "components/Container";
 import Header from "components/Header";
 import Footer from "components/Footer";
 import ModalAddFilm from "components/Modal/ModalAddFilm";
+import { StoreProvider } from "store/StoreProvider";
 
 const openSans = Open_Sans({
   weight: ["400", "500", "700"],
@@ -23,12 +24,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ru">
       <body className={openSans.className}>
-        <Container>
-          <Header />
-          {children}
-          <Footer />
-        </Container>
-        <ModalAddFilm />
+        <StoreProvider>
+          <Container>
+            <Header />
+            {children}
+            <Footer />
+          </Container>
+          <ModalAddFilm />
+        </StoreProvider>
       </body>
     </html>
   );
