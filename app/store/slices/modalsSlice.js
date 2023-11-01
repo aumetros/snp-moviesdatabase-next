@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = [
   {
     name: "addFilm",
-    open: false,
+    isOpen: false,
   },
 ];
 
@@ -16,7 +16,7 @@ const modalsSlice = createSlice({
         if (modal.name === payload) {
           return {
             ...modal,
-            open: true,
+            isOpen: true,
           };
         }
         return modal;
@@ -26,7 +26,7 @@ const modalsSlice = createSlice({
       return state.map((modal) => {
         return {
           ...modal,
-          open: false,
+          isOpen: false,
         };
       });
     },
