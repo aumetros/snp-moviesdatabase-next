@@ -1,17 +1,8 @@
-"use client";
-import { useDispatch } from "react-redux";
-import { openModal } from "store/slices/modalsSlice";
 import Counter from "components/Counter";
+import AddButton from "components/AddButton";
 import styles from "./Header.module.scss";
 
-export default function Header() {
-  const dispatch = useDispatch();
-
-  function handleOpenAddModal() {
-    dispatch(openModal("addFilm"));
-  }
-
-  
+export default function Header() {  
   return (
     <header className={styles.root}>
       <div className={styles["logo-container"]}>
@@ -27,10 +18,7 @@ export default function Header() {
           <span className={styles["counter-mob"]}>: <Counter /></span>
         </p>
         <span className={styles.counter}><Counter /></span>
-        <button
-          className={styles["add-film-btn"]}
-          onClick={handleOpenAddModal}
-        ></button>
+        <AddButton />
       </div>
     </header>
   );
