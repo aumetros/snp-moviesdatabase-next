@@ -1,5 +1,8 @@
 "use client";
 import { useForm } from "react-hook-form";
+import { nanoid } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
+import { addFilm } from "store/slices/filmsSlice";
 import {
   TITLE_REQUIRED,
   TITLE_MINLENGTH,
@@ -12,7 +15,7 @@ import {
   YEAR_FORMAT,
   POSTER_REQUIRED,
   POSTER_REG,
-  POSTER_FORMAT
+  POSTER_FORMAT,
 } from "utils/constants";
 import styles from "./FilmForm.module.scss";
 
@@ -26,11 +29,27 @@ export default function FilmForm({ title, name, submitText }) {
     mode: "onChange",
   });
 
+  const dispatch = useDispatch();
+
+  function submitForm(data) {
+    const newFilm = {
+      id: nanoid(),
+      title: data.title,
+      director: data.director,
+      year: data.year,
+      poster: data.poster,
+    };
+    dispatch(addFilm(newFilm));
+    // setTimeout(() => {
+      
+    // }, 300);
+  }
+
   return (
     <form
       className={styles.root}
       name={name}
-      onSubmit={handleSubmit((data) => console.log(data))}
+      onSubmit={handleSubmit(submitForm)}
     >
       <h2 className={styles.title}>{title}</h2>
       <hr className={styles.line} />
