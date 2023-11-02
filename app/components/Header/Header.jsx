@@ -1,6 +1,7 @@
 "use client";
 import { useDispatch } from "react-redux";
 import { openModal } from "store/slices/modalsSlice";
+import Counter from "components/Counter";
 import styles from "./Header.module.scss";
 
 export default function Header() {
@@ -23,9 +24,9 @@ export default function Header() {
       <div className={styles.container}>
         <p className={styles.text}>
           Всего фильмов в базе данных
-          <span className={styles["counter-mob"]}>: 10</span>
+          <span className={styles["counter-mob"]}>: <Counter /></span>
         </p>
-        <span className={styles.counter}>10</span>
+        <span className={styles.counter}><Counter /></span>
         <button
           className={styles["add-film-btn"]}
           onClick={handleOpenAddModal}
