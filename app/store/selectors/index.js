@@ -7,5 +7,11 @@ export const selectAddModal = createSelector(selectModals, (modals) =>
   modals.find((modal) => modal.name === "addFilm")
 );
 
+export const selectViewModal = createSelector(selectModals, (modals) =>
+  modals.find((modal) => modal.name === "viewFilm")
+);
+
 /**Селекторы фильмов */
-export const selectFilms = (state) => state.films;
+export const selectFilms = (state) => state.films.entities;
+
+export const selectPreview = (state) => state.films.preview;

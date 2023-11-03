@@ -5,6 +5,10 @@ const initialState = [
     name: "addFilm",
     isOpen: false,
   },
+  {
+    name: "previewFilm",
+    isOpen: false,
+  },
 ];
 
 const modalsSlice = createSlice({
