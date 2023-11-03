@@ -1,4 +1,4 @@
-import ViewButton from "components/ViewButton";
+import PreviewButton from "components/PreviewButton";
 import styles from "./Film.module.scss";
 
 export default function Film({ film }) {
@@ -9,7 +9,7 @@ export default function Film({ film }) {
       <p className={styles.title}>{`${film.title} / (${film.year})`}</p>
       </div>
       <div className={styles.actions}>
-        <ViewButton film={film} />
+        <PreviewButton film={film} />
       </div>
     </li>
   );
