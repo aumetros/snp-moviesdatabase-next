@@ -1,11 +1,11 @@
 "use client";
-
 import { configureStore } from "@reduxjs/toolkit";
 import filmsReducer from "./slices/filmsSlice.js";
 import modalsReducer from "./slices/modalsSlice.js";
-import { localStorageMiddleware } from "./middleware/index.js";
+import { localStorageMiddleware } from "./middleware";
 
-export default configureStore({
+
+const store = configureStore({
   reducer: {
     films: filmsReducer,
     modals: modalsReducer,
@@ -13,3 +13,5 @@ export default configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(localStorageMiddleware),
 });
+
+export default store;

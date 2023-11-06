@@ -1,12 +1,9 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
-
-const films = localStorage.getItem("filmsState")
-  ? JSON.parse(localStorage.getItem("filmsState")).films.entities
-  : [];
+import preLoadFilms from "store/preLoadFilms";
 
 const initialState = {
-  entities: films,
+  entities: preLoadFilms(),
   preview: {},
 };
 

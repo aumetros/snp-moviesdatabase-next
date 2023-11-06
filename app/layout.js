@@ -4,6 +4,7 @@ import Container from "components/Container";
 import Header from "components/Header";
 import Footer from "components/Footer";
 import ModalAddFilm from "components/Modal/ModalAddFilm";
+import ModalPreviewFilm from "components/Modal/ModalPreviewFilm";
 import { StoreProvider } from "store/StoreProvider";
 
 const openSans = Open_Sans({
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
             <Footer />
           </Container>
           <ModalAddFilm />
+          <ModalPreviewFilm />
         </StoreProvider>
       </body>
     </html>
