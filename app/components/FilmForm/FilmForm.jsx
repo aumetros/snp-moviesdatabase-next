@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { addFilm } from "store/slices/filmsSlice";
+import { closeModal } from "store/slices/modalsSlice";
 import {
   TITLE_REQUIRED,
   TITLE_MINLENGTH,
@@ -40,9 +41,10 @@ export default function FilmForm({ title, name, submitText }) {
       poster: data.poster,
     };
     dispatch(addFilm(newFilm));
-    // setTimeout(() => {
-      
-    // }, 300);
+    dispatch(closeModal());
+    setTimeout(() => {
+      reset();
+    }, 200);
   }
 
   return (
