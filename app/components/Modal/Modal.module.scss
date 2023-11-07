@@ -12,9 +12,9 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  background-color: rgba(0, 0, 0, 0.5);  
+  background-color: rgba(0, 0, 0, 0.5);
   transition: visibility 0.25s, opacity 0.25s linear;
-  
+
   &.opened {
     visibility: visible;
     opacity: 1;
@@ -31,11 +31,11 @@
   border-radius: 10px;
   align-items: center;
   box-sizing: border-box;
-  background-color: #ffffff; 
+  background-color: #ffffff;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
 
   @include mobile {
-    padding: 20px 10px
+    padding: 20px 10px;
   }
 }
 
@@ -67,47 +67,5 @@
 .line {
   width: 300px;
   margin-bottom: 25px;
-  color: #000000;  
-}
-
-.fastview-title {
-  margin: 0 0 5px;
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 22px;
   color: #000000;
-}
-
-.fastview {
-  display: flex;
-  width: 100%;
-  min-height: 260px;
-  color: #000000;
-}
-
-.poster {
-  width: 170px;
-  height: 220px;
-  padding: 5px;
-  border: 1px #000000 solid;
-  object-fit: cover;
-}
-
-.details {
-  flex-grow: 1;
-  padding: 0 15px;
-}
-
-.detail-title {
-  margin: 0 0 12px;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 18px;
-}
-
-.detail {
-  margin: 0 0 25px;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 16px;
 }

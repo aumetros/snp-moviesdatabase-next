@@ -6,6 +6,12 @@
   }
 }
 
+@mixin small {
+  @media (max-width: $breakpoint_s) {
+    @content;
+  }
+}
+
 @mixin hover {
   transition: opacity 200ms, background-color 200ms, color 200ms,
     border-color 200ms;
