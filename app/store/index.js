@@ -4,7 +4,6 @@ import filmsReducer from "./slices/filmsSlice.js";
 import modalsReducer from "./slices/modalsSlice.js";
 import { localStorageMiddleware } from "./middleware";
 
-
 const store = configureStore({
   reducer: {
     films: filmsReducer,
