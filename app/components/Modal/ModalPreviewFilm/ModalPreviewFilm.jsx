@@ -7,9 +7,18 @@ import { selectPreviewModal, selectPreview } from "store/selectors";
 import styles from "./ModalPreviewFilm.module.scss";
 
 export default function ModalPreviewFilm() {
-  const previewModal = useSelector(selectPreviewModal);
   const film = useSelector(selectPreview);
+  const previewModal = useSelector(selectPreviewModal);
+  const [srcPoster, setSrcPoster] = React.useState("");
   const [isClient, setIsClient] = React.useState(false);
+
+  function handleErrorPoster() {
+    setSrcPoster("/no-poster.jpg");
+  }
+
+  React.useEffect(() => {
+    setSrcPoster(film.poster);
+  }, [film]);
 
   React.useEffect(() => {
     setIsClient(true);
@@ -18,25 +27,23 @@ export default function ModalPreviewFilm() {
     <>
       {isClient ? (
         <Modal isOpen={previewModal.isOpen}>
-          <h2 className={styles.title}>
-            Быстрый просмотр данных фильма
-          </h2>
+          <h2 className={styles.title}>Быстрый просмотр данных фильма</h2>
           <hr className={styles.line} />
           <div className={styles.container}>
             <Image
               className={styles.poster}
-              src={film.poster || "/no-poster.jpg"}
-              alt={`Постер фильма ${film.title}` || "Постера нет"}
+              src={srcPoster || "/no-poster.jpg"}
+              alt={`Постер фильма ${film.title}`}
               width={170}
               height={220}
-              // onError={onError}
+              onError={handleErrorPoster}
             />
             <div className={styles.details}>
-              <h3 className={styles['detail-title']}>Название фильма:</h3>
+              <h3 className={styles["detail-title"]}>Название фильма:</h3>
               <p className={styles.detail}>{film.title}</p>
-              <h3 className={styles['detail-title']}>Режиссер фильма:</h3>
+              <h3 className={styles["detail-title"]}>Режиссер фильма:</h3>
               <p className={styles.detail}>{film.director}</p>
-              <h3 className={styles['detail-title']}>Год создания фильма:</h3>
+              <h3 className={styles["detail-title"]}>Год создания фильма:</h3>
               <p className={styles.detail}>{film.year}</p>
             </div>
           </div>
