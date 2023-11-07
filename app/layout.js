@@ -3,7 +3,7 @@ import "styles/globals.css";
 import Container from "components/Container";
 import Header from "components/Header";
 import Footer from "components/Footer";
-import ModalAddFilm from "@/components/Modal/ModalAddFilm/ModalAddFilm";
+import ModalAddFilm from "components/Modal/ModalAddFilm";
 import ModalPreviewFilm from "components/Modal/ModalPreviewFilm";
 import { StoreProvider } from "store/StoreProvider";
 
