@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import preLoadFilms from "store/preLoadFilms";
 
 const initialState = {
-  entities: preLoadFilms(),
+  entities: preLoadFilms() || [],
   preview: {},
 };
 
