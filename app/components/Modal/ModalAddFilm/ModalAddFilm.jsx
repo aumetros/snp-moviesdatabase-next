@@ -1,5 +1,5 @@
 "use client";
-import Modal from "../Modal";
+import Modal from "components/Modal";
 import FilmForm from "components/FilmForm";
 import { useSelector } from "react-redux";
 import { selectAddModal } from "store/selectors";
