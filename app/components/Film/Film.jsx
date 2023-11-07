@@ -6,7 +6,7 @@ export default function Film({ film }) {
     <li className={styles.root}>
       <div className={styles.container}>
       <div className={styles.bullet}></div>
-      <p className={styles.title}>{`${film.title} / (${film.year})`}</p>
+      <p className={styles.title}>{`"${film.title}" / (${film.year})`}</p>
       </div>
       <div className={styles.actions}>
         <PreviewButton film={film} />
