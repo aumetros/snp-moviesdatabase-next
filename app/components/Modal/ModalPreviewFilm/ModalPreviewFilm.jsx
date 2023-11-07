@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import Modal from "../Modal";
+import Modal from "components/Modal";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { selectPreviewModal, selectPreview } from "store/selectors";
