@@ -1,7 +1,15 @@
-export default function Input({register, errors, name, classInput, classErrors, validation, ...rest}) {
+export default function Input({
+  register,
+  errors,
+  name,
+  classInput,
+  classErrors,
+  validation,
+  ...rest
+}) {
   return (
     <>
-    <input
+      <input
         className={classInput}
         name={name}
         maxLength={51}
@@ -9,9 +17,7 @@ export default function Input({register, errors, name, classInput, classErrors, 
         {...register(name, validation)}
         {...rest}
       />
-      <span className={classErrors}>
-        {errors && errors.message}
-      </span>
+      <span className={classErrors}>{errors && errors.message}</span>
     </>
-  )
+  );
 }

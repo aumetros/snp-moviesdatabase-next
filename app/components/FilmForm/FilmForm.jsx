@@ -77,14 +77,16 @@ export default function FilmForm({ title, name, submitText }) {
           },
         }}
       />
-
-      <input
-        className={styles.input}
+      <Input
         type="text"
         name="director"
+        register={register}
+        errors={errors?.director}
+        classInput={styles.input}
+        classErrors={styles.error}
         maxLength={41}
         placeholder="Введите имя режиссера фильма"
-        {...register("director", {
+        validation={{
           required: DIR_REQUIRED,
           minLength: {
             value: 3,
@@ -94,47 +96,41 @@ export default function FilmForm({ title, name, submitText }) {
             value: 40,
             message: DIR_MAXLENGTH,
           },
-        })}
+        }}
       />
-      <span className={styles.error}>
-        {errors?.director && errors?.director?.message}
-      </span>
-
-      <input
-        className={styles.input}
+      <Input
         type="text"
         name="year"
+        register={register}
+        errors={errors?.year}
+        classInput={styles.input}
+        classErrors={styles.error}
         maxLength={4}
         placeholder="Введите год выхода фильма"
-        {...register("year", {
+        validation={{
           required: YEAR_REQUIRED,
           pattern: {
             value: YEAR_REG,
             message: YEAR_FORMAT,
           },
-        })}
+        }}
       />
-      <span className={styles.error}>
-        {errors?.year && errors?.year?.message}
-      </span>
-
-      <input
-        className={styles.input}
+      <Input
         type="text"
         name="poster"
+        register={register}
+        errors={errors?.poster}
+        classInput={styles.input}
+        classErrors={styles.error}
         placeholder="Введите ссылку на постер фильма"
-        {...register("poster", {
+        validation={{
           required: POSTER_REQUIRED,
           pattern: {
             value: POSTER_REG,
             message: POSTER_FORMAT,
           },
-        })}
+        }}
       />
-      <span className={styles.error}>
-        {errors?.poster && errors?.poster?.message}
-      </span>
-
       <div className={styles["buttons-container"]}>
         <button
           type="submit"
