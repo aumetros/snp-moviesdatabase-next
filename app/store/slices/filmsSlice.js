@@ -1,9 +1,8 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
-import preLoadFilms from "store/preLoadFilms";
 
 const initialState = {
-  entities: preLoadFilms() || [],
+  entities: [],
   preview: {},
 };
 
@@ -11,8 +10,12 @@ const filmsSlice = createSlice({
   name: "films",
   initialState,
   reducers: {
+    setFilms(state, { payload }) {
+      state.entities = payload.entities;
+    },
     addFilm(state, { payload }) {
       state.entities.push(payload);
+      localStorage.setItem("filmsState", JSON.stringify(state));
     },
     setPreview(state, { payload }) {
       state.preview = payload;
@@ -20,6 +23,6 @@ const filmsSlice = createSlice({
   },
 });
 
-export const { addFilm, setPreview } = filmsSlice.actions;
+export const { setFilms, addFilm, setPreview } = filmsSlice.actions;
 
 export default filmsSlice.reducer;

@@ -1,22 +1,26 @@
 "use client";
 import React from "react";
 import Film from "components/Film";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectFilms } from "store/selectors";
+import { setFilms } from "store/slices/filmsSlice";
 import styles from "./FilmsList.module.scss";
 
 export default function FilmsList() {
-  const [isClient, setIsClient] = React.useState(false)
+  const dispatch = useDispatch();
 
   React.useEffect(() => {
-    setIsClient(true);
-  }, [])
+    if (localStorage.getItem("filmsState") !== null) {
+      dispatch(setFilms(JSON.parse(localStorage.getItem("filmsState"))));
+    }
+  }, [dispatch]);
+
   const films = useSelector(selectFilms);
   return (
     <ul className={styles.root}>
-      {isClient ? films.map((film) => {
+      {films.map((film) => {
         return <Film key={film.id} film={film} />;
-      }) : null}
+      })}
     </ul>
   );
 }
