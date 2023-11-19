@@ -4,6 +4,7 @@ import { nanoid } from "@reduxjs/toolkit";
 import { useDispatch } from "react-redux";
 import { addFilm } from "store/slices/filmsSlice";
 import { closeModal } from "store/slices/modalsSlice";
+import Input from "components/Input";
 import {
   TITLE_REQUIRED,
   TITLE_MINLENGTH,
@@ -55,13 +56,16 @@ export default function FilmForm({ title, name, submitText }) {
     >
       <h2 className={styles.title}>{title}</h2>
       <hr className={styles.line} />
-      <input
-        className={styles.input}
+      <Input
         type="text"
         name="title"
+        register={register}
+        errors={errors?.title}
+        classInput={styles.input}
+        classErrors={styles.error}
         maxLength={51}
         placeholder="Введите название фильма"
-        {...register("title", {
+        validation={{
           required: TITLE_REQUIRED,
           minLength: {
             value: 2,
@@ -71,11 +75,8 @@ export default function FilmForm({ title, name, submitText }) {
             value: 50,
             message: TITLE_MAXLENGTH,
           },
-        })}
+        }}
       />
-      <span className={styles.error}>
-        {errors?.title && errors?.title?.message}
-      </span>
 
       <input
         className={styles.input}
