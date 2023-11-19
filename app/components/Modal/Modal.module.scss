@@ -12,7 +12,7 @@
   align-items: center;
   visibility: hidden;
   opacity: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--grayscale-layout);
   transition: visibility 0.25s, opacity 0.25s linear;
 
   &.opened {
@@ -31,8 +31,8 @@
   border-radius: 10px;
   align-items: center;
   box-sizing: border-box;
-  background-color: #ffffff;
-  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  background-color: var(--grayscale-white);
+  box-shadow: 0px 0px 25px var(--grayscale-grey-shadow);
 
   @include mobile {
     padding: 20px 10px;
@@ -51,7 +51,7 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   cursor: pointer;
 
   &:hover {
@@ -67,5 +67,5 @@
 .line {
   width: 300px;
   margin-bottom: 25px;
-  color: #000000;
+  color: var(--grayscale-black);
 }

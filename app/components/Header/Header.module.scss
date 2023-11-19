@@ -3,7 +3,7 @@
 .root {
   display: flex;
   min-height: 150px;
-  border-bottom: 1px #ffffff80 solid;
+  border-bottom: 1px var(--grayscale-80) solid;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;

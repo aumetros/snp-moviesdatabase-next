@@ -10,12 +10,12 @@
   min-height: 35px;
   margin-right: 10px;
   box-sizing: border-box;
-  border: 1px #ffffff25 solid;
+  border: 1px var(--grayscale-25) solid;
   border-radius: 5px;
   align-items: center;
   transition: opacity 0.2s ease-in-out;
 
-  @include hoverBorder(#8f8f8f8a);
+  @include hoverBorder(var(--grayscale-grey));
 }
 
 .bullet {

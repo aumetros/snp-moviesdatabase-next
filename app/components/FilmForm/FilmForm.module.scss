@@ -7,7 +7,7 @@
   margin: 0 auto;
   align-items: flex-start;
   box-sizing: border-box;
-  color: #000000;
+  color: var(--grayscale-black);
 }
 
 .title {
@@ -25,7 +25,7 @@
 .line {
   width: 300px;
   margin-bottom: 30px;
-  color: #000000;
+  color: var(--grayscale-black);
 }
 
 .buttons-container {
@@ -47,18 +47,18 @@
   font-size: 14px;
   font-weight: 500;
   line-height: 17px;
-  color: #ffffff;
-  background-color: #0c1526;
+  color: var(-grayscale-white);
+  background-color: var(--primary-blue-deep);
   cursor: pointer;
   transition: background-color 200ms, opacity 200ms;
 
   &:hover {
-    background-color: #142c57;
+    background-color: var(--primary-blue-navy);
   }
 
   &.inactive {
-    background-color: #a0a0a0;
-    color: #000000;
+    background-color: var(--grayscale-grey);
+    color: var(--grayscale-black);
   }
 
   &.inactive:hover {
@@ -68,9 +68,9 @@
 }
 
 .delete {
-  background-color: #4f0101;
+  background-color: var(--primary-red-dark);
 
-  @include hoverBackgroundColor(#691010);
+  @include hoverBackgroundColor(--primary-red-light);
 }
 
 .label {
@@ -85,7 +85,7 @@
   padding: 0 0 5px;
   width: 100%;
   border: 0;
-  border-bottom: 1px solid #e8e8e8;
+  border-bottom: 1px solid var(--grayscale-grey-light);
   outline: 0;
   font-size: 15px;
   font-weight: 400;
@@ -95,11 +95,11 @@
     font-size: 15px;
     font-weight: 400;
     line-height: 17px;
-    color: #a0a0a0;
+    color: var(--grayscale-grey-ph);
   }
 
   &:focus {
-    border-bottom: 1px solid #a8a7a7;
+    border-bottom: 1px solid var(--grayscale-grey);
   }
 }
 
@@ -109,5 +109,5 @@
   font-size: 11px;
   font-weight: 400;
   line-height: 12px;
-  color: #ff3055;
+  color: var(--primary-red-error);
 }
