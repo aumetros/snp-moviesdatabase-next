@@ -1,39 +1,22 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = [
-  {
-    name: "addFilm",
-    isOpen: false,
-  },
-  {
-    name: "previewFilm",
-    isOpen: false,
-  },
-];
+const initialState = {
+  addFilm: false,
+  previewFilm: false,
+};
 
 const modalsSlice = createSlice({
   name: "modals",
   initialState,
   reducers: {
     openModal(state, { payload }) {
-      return state.map((modal) => {
-        if (modal.name === payload) {
-          return {
-            ...modal,
-            isOpen: true,
-          };
-        }
-        return modal;
-      });
+      state[payload] = true;
     },
     closeModal(state) {
-      return state.map((modal) => {
-        return {
-          ...modal,
-          isOpen: false,
-        };
-      });
+      for (const key in state) {
+        state[key] = false;
+      }
     },
   },
 });

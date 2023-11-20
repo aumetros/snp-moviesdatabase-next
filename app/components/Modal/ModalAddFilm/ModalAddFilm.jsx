@@ -2,18 +2,18 @@
 import Modal from "components/Modal";
 import FilmForm from "components/FilmForm";
 import { useSelector } from "react-redux";
-import { selectAddModal } from "store/selectors";
+import { selectModals } from "store/selectors";
 
 export default function ModalAddFilm() {
-  const addModal = useSelector(selectAddModal);
+  const modals = useSelector(selectModals);
 
   return (
-    <Modal isOpen={addModal.isOpen}>
+    <Modal isOpen={modals.addFilm}>
       <FilmForm
         title="Добавить новый фильм"
         name="addFilm"
         submitText="Добавить"
       />
     </Modal>
-  );
+  ); 
 }

@@ -1,18 +1,10 @@
-'use client'
-import { createSelector } from "@reduxjs/toolkit";
+"use client";
 
-/**Селекторы модальных окон */
+/**Селектор модальных окон */
 export const selectModals = (state) => state.modals;
 
-export const selectAddModal = createSelector(selectModals, (modals) =>
-  modals.find((modal) => modal.name === "addFilm")
-);
-
-export const selectPreviewModal = createSelector(selectModals, (modals) =>
-  modals.find((modal) => modal.name === "previewFilm")
-);
-
-/**Селекторы фильмов */
+/**Селектор фильмов */
 export const selectFilms = (state) => state.films.entities;
 
+/**Селектор предпросмотра фильма */
 export const selectPreview = (state) => state.films.preview;

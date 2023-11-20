@@ -3,12 +3,12 @@ import React from "react";
 import Modal from "components/Modal";
 import Image from "next/image";
 import { useSelector } from "react-redux";
-import { selectPreviewModal, selectPreview } from "store/selectors";
+import { selectModals, selectPreview } from "store/selectors";
 import styles from "./ModalPreviewFilm.module.scss";
 
 export default function ModalPreviewFilm() {
   const film = useSelector(selectPreview);
-  const previewModal = useSelector(selectPreviewModal);
+  const modals = useSelector(selectModals);
   const [srcPoster, setSrcPoster] = React.useState("");
 
   function handleErrorPoster() {
@@ -20,7 +20,7 @@ export default function ModalPreviewFilm() {
   }, [film]);
 
   return (
-    <Modal isOpen={previewModal.isOpen}>
+    <Modal isOpen={modals.previewFilm}>
       <h2 className={styles.title}>Быстрый просмотр данных фильма</h2>
       <hr className={styles.line} />
       <div className={styles.container}>
