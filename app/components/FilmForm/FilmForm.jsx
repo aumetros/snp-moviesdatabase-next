@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { addFilm } from "store/slices/filmsSlice";
 import { closeModal } from "store/slices/modalsSlice";
 import Input from "components/Input";
+import Button from "components/Button";
 import {
   TITLE_REQUIRED,
   TITLE_MINLENGTH,
@@ -132,13 +133,12 @@ export default function FilmForm({ title, name, submitText }) {
         }}
       />
       <div className={styles["buttons-container"]}>
-        <button
+        <Button 
           type="submit"
           className={`${styles.submit} ${!isValid && styles.inactive}`}
+          buttonText={submitText}
           disabled={!isValid}
-        >
-          {submitText}
-        </button>
+        />
       </div>
     </form>
   );

@@ -12,7 +12,6 @@ export default function Input({
       <input
         className={classInput}
         name={name}
-        maxLength={51}
         placeholder="Введите название фильма"
         {...register(name, validation)}
         {...rest}
