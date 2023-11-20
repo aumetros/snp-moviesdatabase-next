@@ -1,6 +1,7 @@
 "use client";
 import { useDispatch } from "react-redux";
 import { openModal } from "store/slices/modalsSlice";
+import Button from "components/Button";
 import styles from "./AddButton.module.scss";
 
 export default function AddButton() {
@@ -11,9 +12,11 @@ export default function AddButton() {
   }
 
   return (
-    <button
+    <Button
+      type="button"
       className={styles.root}
       onClick={handleOpenAddModal}
-    ></button>
+      buttonText="+"
+    />
   );
 }
