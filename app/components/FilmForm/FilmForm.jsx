@@ -20,6 +20,8 @@ import {
   POSTER_REG,
   POSTER_FORMAT,
 } from "utils/constants";
+
+
 import styles from "./FilmForm.module.scss";
 
 export default function FilmForm({ title, name, submitText }) {

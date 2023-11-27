@@ -1,3 +1,5 @@
+import styles from "./Input.module.scss";
+
 export default function Input({
   register,
   errors,
@@ -10,7 +12,7 @@ export default function Input({
   return (
     <>
       <input
-        className={classInput}
+        className={styles.root}
         name={name}
         placeholder="Введите название фильма"
         {...register(name, validation)}

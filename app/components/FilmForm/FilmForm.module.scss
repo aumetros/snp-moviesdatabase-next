@@ -80,29 +80,6 @@
   line-height: 14px;
 }
 
-.input {
-  margin-bottom: 3px;
-  padding: 0 0 5px;
-  width: 100%;
-  border: 0;
-  border-bottom: 1px solid var(--grayscale-grey-light);
-  outline: 0;
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 17px;
-
-  &::placeholder {
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 17px;
-    color: var(--grayscale-grey-ph);
-  }
-
-  &:focus {
-    border-bottom: 1px solid var(--grayscale-grey);
-  }
-}
-
 .error {
   min-height: 12px;
   margin-bottom: 15px;
