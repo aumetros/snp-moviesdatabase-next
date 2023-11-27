@@ -14,7 +14,6 @@ export default function Input({
       <input
         className={styles.root}
         name={name}
-        placeholder="Введите название фильма"
         {...register(name, validation)}
         {...rest}
       />
