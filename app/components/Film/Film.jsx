@@ -1,4 +1,5 @@
 import PreviewButton from "components/PreviewButton";
+import EditButton from "components/EditButton";
 import styles from "./Film.module.scss";
 
 export default function Film({ film }) {
@@ -10,6 +11,7 @@ export default function Film({ film }) {
       </div>
       <div className={styles.actions}>
         <PreviewButton film={film} />
+        <EditButton />
       </div>
     </li>
   );
