@@ -36,21 +36,6 @@ export default function FilmForm({ title, name, submitText, onSubmit }) {
     }, 200);
   }
 
-  // function submitForm(data) {
-  //   const newFilm = {
-  //     id: nanoid(),
-  //     title: data.title,
-  //     director: data.director,
-  //     year: data.year,
-  //     poster: data.poster,
-  //   };
-  //   dispatch(addFilm(newFilm));
-  //   dispatch(closeModal());
-  //   setTimeout(() => {
-  //     reset();
-  //   }, 200);
-  // }
-
   return (
     <form
       className={styles.root}

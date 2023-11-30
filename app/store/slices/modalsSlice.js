@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   addFilm: false,
   previewFilm: false,
+  editFilm: false,
 };
 
 const modalsSlice = createSlice({
