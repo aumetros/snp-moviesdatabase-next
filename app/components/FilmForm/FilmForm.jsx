@@ -1,9 +1,5 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { nanoid } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import { addFilm } from "store/slices/filmsSlice";
-import { closeModal } from "store/slices/modalsSlice";
 import Input from "components/Input";
 import Button from "components/Button";
 import {
@@ -21,10 +17,9 @@ import {
   POSTER_FORMAT,
 } from "utils/constants";
 
-
 import styles from "./FilmForm.module.scss";
 
-export default function FilmForm({ title, name, submitText }) {
+export default function FilmForm({ title, name, submitText, onSubmit }) {
   const {
     register,
     handleSubmit,
@@ -34,28 +29,33 @@ export default function FilmForm({ title, name, submitText }) {
     mode: "onChange",
   });
 
-  const dispatch = useDispatch();
-
-  function submitForm(data) {
-    const newFilm = {
-      id: nanoid(),
-      title: data.title,
-      director: data.director,
-      year: data.year,
-      poster: data.poster,
-    };
-    dispatch(addFilm(newFilm));
-    dispatch(closeModal());
+  function handleSubmitForm(data) {
+    onSubmit(data);
     setTimeout(() => {
       reset();
     }, 200);
   }
 
+  // function submitForm(data) {
+  //   const newFilm = {
+  //     id: nanoid(),
+  //     title: data.title,
+  //     director: data.director,
+  //     year: data.year,
+  //     poster: data.poster,
+  //   };
+  //   dispatch(addFilm(newFilm));
+  //   dispatch(closeModal());
+  //   setTimeout(() => {
+  //     reset();
+  //   }, 200);
+  // }
+
   return (
     <form
       className={styles.root}
       name={name}
-      onSubmit={handleSubmit(submitForm)}
+      onSubmit={handleSubmit(handleSubmitForm)}
     >
       <h2 className={styles.title}>{title}</h2>
       <hr className={styles.line} />
@@ -135,7 +135,7 @@ export default function FilmForm({ title, name, submitText }) {
         }}
       />
       <div className={styles["buttons-container"]}>
-        <Button 
+        <Button
           type="submit"
           className={`${styles.submit} ${!isValid && styles.inactive}`}
           buttonText={submitText}
