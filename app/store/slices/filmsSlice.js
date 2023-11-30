@@ -20,6 +20,17 @@ const filmsSlice = createSlice({
     setPreview(state, { payload }) {
       state.preview = payload;
     },
+    editFilm(state, { payload }) {
+      const { filmId, data } = payload;
+      const film = state.find((film) => film.id === filmId);
+      if (film) {
+        film.title = data.title;
+        film.director = data.director;
+        film.year = data.year;
+        film.poster = data.poster;
+      }
+      localStorage.setItem("filmsState", JSON.stringify(state));
+    },
   },
 });
 

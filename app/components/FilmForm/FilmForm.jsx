@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { useForm } from "react-hook-form";
 import Input from "components/Input";
 import Button from "components/Button";
@@ -19,11 +20,19 @@ import {
 
 import styles from "./FilmForm.module.scss";
 
-export default function FilmForm({ title, name, submitText, onSubmit }) {
+export default function FilmForm({
+  title,
+  name,
+  submitText,
+  onSubmit,
+  mode,
+  film,
+}) {
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
@@ -35,6 +44,15 @@ export default function FilmForm({ title, name, submitText, onSubmit }) {
       reset();
     }, 200);
   }
+
+  React.useEffect(() => {
+    if (mode === "edit") {
+      setValue("title", film.title);
+      setValue("director", film.director);
+      setValue("year", film.year);
+      setValue("poster", film.poster);
+    }
+  }, [mode, setValue, film]);
 
   return (
     <form
