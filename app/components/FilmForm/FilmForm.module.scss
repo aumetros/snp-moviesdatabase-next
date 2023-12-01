@@ -32,6 +32,11 @@
   display: flex;
   margin: 0 auto;
   gap: 20px;
+
+  @include small {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .submit {
@@ -65,12 +70,16 @@
     opacity: 0.8;
     cursor: auto;
   }
+
+  @include small {
+    margin-top: 0;
+  }
 }
 
 .delete {
   background-color: var(--primary-red-dark);
 
-  @include hoverBackgroundColor(--primary-red-light);
+  @include hoverBackgroundColor(var(--primary-red-light));
 }
 
 .label {

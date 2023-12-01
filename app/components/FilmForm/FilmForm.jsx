@@ -144,6 +144,13 @@ export default function FilmForm({
           buttonText={submitText}
           disabled={!isValid}
         />
+        {mode === "edit" && (
+          <Button
+            type="button"
+            className={`${styles.submit} ${styles.delete}`}
+            buttonText="Удалить"
+          />
+        )}
       </div>
     </form>
   );
