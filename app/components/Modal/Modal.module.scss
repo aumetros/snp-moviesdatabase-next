@@ -1,0 +1,71 @@
+@import "styles/mixins.scss";
+
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  background-color: var(--grayscale-layout);
+  transition: visibility 0.25s, opacity 0.25s linear;
+
+  &.opened {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 550px;
+  padding: 30px;
+  margin: 0 10px;
+  border-radius: 10px;
+  align-items: center;
+  box-sizing: border-box;
+  background-color: var(--grayscale-white);
+  box-shadow: 0px 0px 25px var(--grayscale-grey-shadow);
+
+  @include mobile {
+    padding: 20px 10px;
+  }
+}
+
+.close {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  min-width: 25px;
+  min-height: 25px;
+  padding: 0;
+  border: 0;
+  background-image: url(/close-icon-wht.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  @include mobile {
+    top: -40px;
+    right: 0;
+  }
+}
+
+.line {
+  width: 300px;
+  margin-bottom: 25px;
+  color: var(--grayscale-black);
+}

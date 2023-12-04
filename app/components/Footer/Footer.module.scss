@@ -1,0 +1,27 @@
+@import "styles/mixins.scss";
+
+.root {
+  display: flex;
+  padding: 0 10px;
+  min-height: 50px;
+  border-top: 1px var(--grayscale-80) solid;  
+  justify-content: space-between;
+  align-items: center;  
+}
+
+.author {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+.link {
+  position: relative;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 14px;
+  color: var(--grayscale-white);
+  text-decoration: none;
+
+  @include hoverUnderline;
+}

@@ -1,0 +1,64 @@
+@import "styles/mixins.scss";
+
+.root {
+  display: flex;
+}
+
+.container {
+  display: flex;
+  flex-grow: 1;
+  min-height: 35px;
+  margin-right: 10px;
+  box-sizing: border-box;
+  border: 1px var(--grayscale-25) solid;
+  border-radius: 5px;
+  align-items: center;
+  transition: opacity 0.2s ease-in-out;
+
+  @include hoverBorder(var(--grayscale-grey));
+}
+
+.bullet {
+  min-width: 25px;
+  min-height: 25px;
+  margin: 0 10px;
+  background-image: url(/film-bullet.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.title {
+  position: relative;
+  margin: 0;
+  flex-grow: 1;
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 20px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit {
+  min-width: 25px;
+  min-height: 25px;
+  background-image: url(/edit.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.6;
+  cursor: pointer;
+
+  @include hoverOpacity;
+
+  @include mobile {
+    opacity: 1;
+    pointer-events: none;
+  }
+}
