@@ -32,6 +32,54 @@
   display: flex;
   margin: 0 auto;
   gap: 20px;
+
+  @include small {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.submit {
+  display: flex;
+  min-width: 210px;
+  min-height: 45px;
+  padding: 0;
+  margin: 20px auto 0;
+  border: 0;
+  border-radius: 3px;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+  color: var(--grayscale-white);
+  background-color: var(--primary-blue-deep);
+  cursor: pointer;
+  transition: background-color 200ms, opacity 200ms;
+
+  &:hover {
+    background-color: var(--primary-blue-navy);
+  }
+
+  &.inactive {
+    background-color: var(--grayscale-grey);
+    color: var(--grayscale-black);
+  }
+
+  &.inactive:hover {
+    opacity: 0.8;
+    cursor: auto;
+  }
+
+  @include small {
+    margin-top: 0;
+  }
+}
+
+.delete {
+  background-color: var(--primary-red-dark);
+
+  @include hoverBackgroundColor(var(--primary-red-light));
 }
 
 .label {

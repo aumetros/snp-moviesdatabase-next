@@ -1,9 +1,6 @@
 "use client";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { nanoid } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import { addFilm } from "store/slices/filmsSlice";
-import { closeModal } from "store/slices/modalsSlice";
 import Input from "components/Input";
 import Button from "components/Button";
 import {
@@ -21,41 +18,47 @@ import {
   POSTER_FORMAT,
 } from "utils/constants";
 
-
 import styles from "./FilmForm.module.scss";
 
-export default function FilmForm({ title, name, submitText }) {
+export default function FilmForm({
+  title,
+  name,
+  submitText,
+  onSubmit,
+  mode,
+  film,
+}) {
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
   });
 
-  const dispatch = useDispatch();
-
-  function submitForm(data) {
-    const newFilm = {
-      id: nanoid(),
-      title: data.title,
-      director: data.director,
-      year: data.year,
-      poster: data.poster,
-    };
-    dispatch(addFilm(newFilm));
-    dispatch(closeModal());
+  function handleSubmitForm(data) {
+    onSubmit(data);
     setTimeout(() => {
       reset();
     }, 200);
   }
 
+  React.useEffect(() => {
+    if (mode === "edit") {
+      setValue("title", film.title);
+      setValue("director", film.director);
+      setValue("year", film.year);
+      setValue("poster", film.poster);
+    }
+  }, [mode, setValue, film]);
+
   return (
     <form
       className={styles.root}
       name={name}
-      onSubmit={handleSubmit(submitForm)}
+      onSubmit={handleSubmit(handleSubmitForm)}
     >
       <h2 className={styles.title}>{title}</h2>
       <hr className={styles.line} />
@@ -135,13 +138,20 @@ export default function FilmForm({ title, name, submitText }) {
         }}
       />
       <div className={styles["buttons-container"]}>
-        <Button 
+        <Button
           type="submit"
           className={`${styles.submit} ${!isValid && styles.inactive}`}
           buttonText={submitText}
           disabled={!isValid}
           mode={["mode_form-button", "submit", `${!isValid && 'inactive'}`]}
         />
+        {mode === "edit" && (
+          <Button
+            type="button"
+            className={`${styles.submit} ${styles.delete}`}
+            buttonText="Удалить"
+          />
+        )}
       </div>
     </form>
   );

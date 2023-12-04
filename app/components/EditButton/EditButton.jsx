@@ -2,17 +2,17 @@ import { useDispatch } from "react-redux";
 import { openModal } from "store/slices/modalsSlice";
 import { setPreview } from "store/slices/filmsSlice";
 import Button from "components/Button";
-import styles from "./PreviewButton.module.scss";
+import styles from "./EditButton.module.scss";
 
-export default function PreviewButton({ film }) {
-
+export default function EditButton({ film }) {
   const dispatch = useDispatch();
 
-  function handleClickPreview() {
+  function handleEditClick() {
     dispatch(setPreview(film));
-    dispatch(openModal("previewFilm"));
+    dispatch(openModal("editFilm"));
   }
+  
   return (
-    <Button className={styles.root} onClick={handleClickPreview} />
+    <Button className={styles.root} onClick={handleEditClick} />
   )
 }
