@@ -25,6 +25,7 @@ export default function FilmForm({
   name,
   submitText,
   onSubmit,
+  onDelete,
   mode,
   film,
 }) {
@@ -142,13 +143,14 @@ export default function FilmForm({
           type="submit"
           buttonText={submitText}
           disabled={!isValid}
-          mode={["mode_form-button", "submit", `${!isValid && 'inactive'}`]}
+          mode={["mode_form-button", "submit", `${!isValid && "inactive"}`]}
         />
         {mode === "edit" && (
           <Button
             type="button"
             buttonText="Удалить"
             mode={["mode_form-button", "delete"]}
+            onClick={onDelete}
           />
         )}
       </div>

@@ -4,7 +4,7 @@ import FilmForm from "components/FilmForm";
 import { useSelector } from "react-redux";
 import { selectModals, selectPreview } from "store/selectors";
 import { closeModal } from "store/slices/modalsSlice";
-import { editFilm } from "store/slices/filmsSlice";
+import { editFilm, deleteFilm } from "store/slices/filmsSlice";
 import { useDispatch } from "react-redux";
 
 export default function ModalEditFilm() {
@@ -18,7 +18,10 @@ export default function ModalEditFilm() {
     dispatch(closeModal());
   }
 
-  function deleteFilm() {}
+  function handleDeleteFilm() {
+    dispatch(deleteFilm(film.id));
+    dispatch(closeModal());
+  }
 
   return (
     <Modal isOpen={modals.editFilm}>
@@ -29,7 +32,7 @@ export default function ModalEditFilm() {
         mode="edit"
         film={film}
         onSubmit={submitForm}
-        onDelete={deleteFilm}
+        onDelete={handleDeleteFilm}
       />
     </Modal>
   );
