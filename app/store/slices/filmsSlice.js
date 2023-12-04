@@ -20,6 +20,9 @@ const filmsSlice = createSlice({
     setPreview(state, { payload }) {
       state.preview = payload;
     },
+    resetPreview(state, { payload }) {
+      state.preview = {};
+    },
     editFilm(state, { payload }) {
       const { filmId, data } = payload;
       state.entities = state.entities.map((film) => {
@@ -37,12 +40,19 @@ const filmsSlice = createSlice({
       localStorage.setItem("filmsState", JSON.stringify(state));
     },
     deleteFilm(state, { payload }) {
-      state.entities = state.entities.filter((film) => film.id !== payload )
+      state.entities = state.entities.filter((film) => film.id !== payload);
       localStorage.setItem("filmsState", JSON.stringify(state));
     },
   },
 });
 
-export const { setFilms, addFilm, setPreview, editFilm, deleteFilm } = filmsSlice.actions;
+export const {
+  setFilms,
+  addFilm,
+  setPreview,
+  resetPreview,
+  editFilm,
+  deleteFilm,
+} = filmsSlice.actions;
 
 export default filmsSlice.reducer;

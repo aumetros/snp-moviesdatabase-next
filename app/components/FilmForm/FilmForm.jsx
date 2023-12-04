@@ -48,10 +48,10 @@ export default function FilmForm({
 
   React.useEffect(() => {
     if (mode === "edit") {
-      setValue("title", film.title);
-      setValue("director", film.director);
-      setValue("year", film.year);
-      setValue("poster", film.poster);
+      setValue("title", film.title, { shouldValidate: true });
+      setValue("director", film.director, { shouldValidate: true });
+      setValue("year", film.year, { shouldValidate: true });
+      setValue("poster", film.poster, { shouldValidate: true });
     }
   }, [mode, setValue, film]);
 
