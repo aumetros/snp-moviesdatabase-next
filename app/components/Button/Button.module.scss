@@ -66,26 +66,26 @@
   color: var(--grayscale-white);
   cursor: pointer;
   transition: background-color 200ms, opacity 200ms;
-}
 
-.submit {
-  background-color: var(--primary-blue-deep);
-  @include hoverBackgroundColor(var(--primary-blue-navy));
-}
+  &.submit {
+    background-color: var(--primary-blue-deep);
+    @include hoverBackgroundColor(var(--primary-blue-navy));
+  }
 
-.delete {
-  background-color: var(--primary-red-dark);
-  @include hoverBackgroundColor(var(--primary-red-light));
-}
+  &.delete {
+    background-color: var(--primary-red-dark);
+    @include hoverBackgroundColor(var(--primary-red-light));
+  }
 
-.inactive {
-  background-color: var(--grayscale-grey);
-  color: var(--grayscale-black);
-
-  &:hover {
+  &.inactive {
     background-color: var(--grayscale-grey);
-    opacity: 0.8;
-    cursor: auto;
+    color: var(--grayscale-black);
+
+    &:hover {
+      background-color: var(--grayscale-grey);
+      opacity: 0.8;
+      cursor: auto;
+    }
   }
 }
 
@@ -109,7 +109,11 @@
     pointer-events: none;
   }
 
-  .preview {
+  &.preview {
     background-image: url(/details.svg);
+  }
+
+  &.edit {
+    background-image: url(/edit.svg);
   }
 }

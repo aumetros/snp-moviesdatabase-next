@@ -140,7 +140,6 @@ export default function FilmForm({
       <div className={styles["buttons-container"]}>
         <Button
           type="submit"
-          className={`${styles.submit} ${!isValid && styles.inactive}`}
           buttonText={submitText}
           disabled={!isValid}
           mode={["mode_form-button", "submit", `${!isValid && 'inactive'}`]}
@@ -148,8 +147,8 @@ export default function FilmForm({
         {mode === "edit" && (
           <Button
             type="button"
-            className={`${styles.submit} ${styles.delete}`}
             buttonText="Удалить"
+            mode={["mode_form-button", "delete"]}
           />
         )}
       </div>

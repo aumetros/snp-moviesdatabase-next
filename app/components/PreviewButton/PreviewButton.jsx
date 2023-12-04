@@ -2,10 +2,8 @@ import { useDispatch } from "react-redux";
 import { openModal } from "store/slices/modalsSlice";
 import { setPreview } from "store/slices/filmsSlice";
 import Button from "components/Button";
-import styles from "./PreviewButton.module.scss";
 
 export default function PreviewButton({ film }) {
-
   const dispatch = useDispatch();
 
   function handleClickPreview() {
@@ -13,6 +11,10 @@ export default function PreviewButton({ film }) {
     dispatch(openModal("previewFilm"));
   }
   return (
-    <Button className={styles.root} onClick={handleClickPreview} />
-  )
+    <Button
+      type="button"
+      onClick={handleClickPreview}
+      mode={["mode_film-button", "preview"]}
+    />
+  );
 }
