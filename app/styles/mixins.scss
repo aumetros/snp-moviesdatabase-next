@@ -1,5 +1,44 @@
+@import "./breakpoints.scss";
+
+@mixin mobile {
+  @media (max-width: $breakpoint_m) {
+    @content;
+  }
+}
+
+@mixin small {
+  @media (max-width: $breakpoint_s) {
+    @content;
+  }
+}
+
 @mixin hover {
-  transition: opacity 200ms, background-color 200ms, color 200ms;
+  transition: opacity 200ms, background-color 200ms, color 200ms,
+    border-color 200ms;
+}
+
+@mixin hoverOpacity {
+  &:hover {
+    opacity: 1;
+  }
+
+  @include hover;
+}
+
+@mixin hoverBorder($border-color) {
+  &:hover {
+    border-color: $border-color;
+  }
+
+  @include hover;
+}
+
+@mixin hoverBackgroundColor($background-color) {
+  &:hover {
+    background-color: $background-color;
+  }
+
+  @include hover;
 }
 
 @mixin hoverUnderline($color: #ffffff, $margin: -3px) {

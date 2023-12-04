@@ -4,7 +4,7 @@
   display: flex;
   padding: 0 10px;
   min-height: 50px;
-  border-top: 1px #ffffff80 solid;  
+  border-top: 1px var(--grayscale-80) solid;  
   justify-content: space-between;
   align-items: center;  
 }
@@ -20,7 +20,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 14px;
-  color: #FFFFFF;
+  color: var(--grayscale-white);
   text-decoration: none;
 
   @include hoverUnderline;

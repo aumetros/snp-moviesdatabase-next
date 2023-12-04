@@ -1,6 +1,8 @@
+import Counter from "components/Counter";
+import AddButton from "components/AddButton";
 import styles from "./Header.module.scss";
 
-export default function Header() {
+export default function Header() {  
   return (
     <header className={styles.root}>
       <div className={styles["logo-container"]}>
@@ -11,9 +13,12 @@ export default function Header() {
         </div>
       </div>
       <div className={styles.container}>
-        <p className={styles.text}>Всего фильмов в базе данных</p>
-        <span className={styles.counter}>10</span>
-        <button className={styles["add-film-btn"]}></button>
+        <p className={styles.text}>
+          Всего фильмов в базе данных
+          <span className={styles["counter-mob"]}>: <Counter /></span>
+        </p>
+        <span className={styles.counter}><Counter /></span>
+        <AddButton />
       </div>
     </header>
   );

@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Проектная работа Movies Database (Next.js 13/Redux Toolkit)
+## Автор: Шевляков Алексей
+## (Salt & Pepper Interns - Направление Frontend разработка)
 
-## Getting Started
+**Технологический стек**
 
-First, run the development server:
+Next.js 13, Redux Toolkit, Sass, LocalStorage, React Hook Form
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Обзор проекта
+Данный проект представляет собой веб-приложение "Movies Database". Данное приложение реализовано c помощью фреймворка Next.js 13, управление состоянием приложения реализовано с помощью Redux Toolkit.
+Функционал приложения включает в себя:
+* Сохранение фильма в базе данных;
+* Обработка и валидации формы добавления фильма;
+* Быстрый просмотр данных фильма в модальном окне;
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Использованные методы**
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Проектная работа создана для отработки следующих технологий и методов:
+* Фреймворк Next.js 13.
+* Стилизация компонетов с помощью Sass.
+* Адаптивная верстка под десктоп и мобильные разрешения экранов.
+* Управление состоянием приложения с помощью пакета Redux Toolkit.
+* Обработка и валидации формы с помощью React Hook Form.
+* Состояние приложения сохраняется в localStorage с помощью мидлвары.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+*ноябрь 2023г*

@@ -1,0 +1,51 @@
+@import "styles/mixins.scss";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  align-items: flex-start;
+  box-sizing: border-box;
+  color: var(--grayscale-black);
+}
+
+.title {
+  max-width: 410px;
+  margin: 0 auto 5px;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 29px;
+
+  @include mobile {
+    font-size: 18px;
+  }
+}
+
+.line {
+  width: 300px;
+  margin-bottom: 30px;
+  color: var(--grayscale-black);
+}
+
+.buttons-container {
+  display: flex;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.label {
+  margin-bottom: 5px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 14px;
+}
+
+.error {
+  min-height: 12px;
+  margin-bottom: 15px;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 12px;
+  color: var(--primary-red-error);
+}
