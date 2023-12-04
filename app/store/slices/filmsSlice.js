@@ -22,13 +22,18 @@ const filmsSlice = createSlice({
     },
     editFilm(state, { payload }) {
       const { filmId, data } = payload;
-      const film = state.entities.find((film) => film.id === filmId);
-      if (film) {
-        film.title = data.title;
-        film.director = data.director;
-        film.year = data.year;
-        film.poster = data.poster;
-      }
+      state.entities = state.entities.map((film) => {
+        if (film.id === filmId) {
+          return {
+            ...film,
+            title: data.title,
+            director: data.director,
+            year: data.year,
+            poster: data.poster,
+          };
+        }
+        return film;
+      });
       localStorage.setItem("filmsState", JSON.stringify(state));
     },
   },
