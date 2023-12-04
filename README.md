@@ -12,6 +12,8 @@ Next.js 13, Redux Toolkit, Sass, LocalStorage, React Hook Form
 * Сохранение фильма в базе данных;
 * Обработка и валидации формы добавления фильма;
 * Быстрый просмотр данных фильма в модальном окне;
+* Редактирование данных фильма;
+* Удаление фильма;
 
 **Использованные методы**
 
@@ -23,4 +25,6 @@ Next.js 13, Redux Toolkit, Sass, LocalStorage, React Hook Form
 * Обработка и валидации формы с помощью React Hook Form.
 * Состояние приложения сохраняется в localStorage с помощью мидлвары.
 
-*ноябрь 2023г*
+**Ссылка на проект - Vercel:** https://snp-moviesdatabase-next.vercel.app  
+
+*декабрь 2023г*

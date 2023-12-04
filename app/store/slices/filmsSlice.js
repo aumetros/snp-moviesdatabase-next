@@ -20,7 +20,7 @@ const filmsSlice = createSlice({
     setPreview(state, { payload }) {
       state.preview = payload;
     },
-    resetPreview(state, { payload }) {
+    resetPreview(state) {
       state.preview = {};
     },
     editFilm(state, { payload }) {
