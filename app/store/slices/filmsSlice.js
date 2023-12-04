@@ -22,7 +22,7 @@ const filmsSlice = createSlice({
     },
     editFilm(state, { payload }) {
       const { filmId, data } = payload;
-      const film = state.find((film) => film.id === filmId);
+      const film = state.entities.find((film) => film.id === filmId);
       if (film) {
         film.title = data.title;
         film.director = data.director;
@@ -34,6 +34,6 @@ const filmsSlice = createSlice({
   },
 });
 
-export const { setFilms, addFilm, setPreview } = filmsSlice.actions;
+export const { setFilms, addFilm, setPreview, editFilm } = filmsSlice.actions;
 
 export default filmsSlice.reducer;
