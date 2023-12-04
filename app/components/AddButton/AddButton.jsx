@@ -17,6 +17,8 @@ export default function AddButton() {
       className={styles.root}
       onClick={handleOpenAddModal}
       buttonText="+"
+      mode={["mode_add"]}
     />
   );
 }
+ 

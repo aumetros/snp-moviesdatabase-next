@@ -140,6 +140,7 @@ export default function FilmForm({ title, name, submitText }) {
           className={`${styles.submit} ${!isValid && styles.inactive}`}
           buttonText={submitText}
           disabled={!isValid}
+          mode={["mode_form-button", "submit", `${!isValid && 'inactive'}`]}
         />
       </div>
     </form>
