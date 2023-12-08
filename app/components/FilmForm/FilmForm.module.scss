@@ -32,6 +32,11 @@
   display: flex;
   margin: 0 auto;
   gap: 20px;
+
+  @include small {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
 
 .label {
