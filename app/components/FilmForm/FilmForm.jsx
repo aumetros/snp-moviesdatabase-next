@@ -1,9 +1,6 @@
 "use client";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { nanoid } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
-import { addFilm } from "store/slices/filmsSlice";
-import { closeModal } from "store/slices/modalsSlice";
 import Input from "components/Input";
 import Button from "components/Button";
 import {
@@ -21,49 +18,70 @@ import {
   POSTER_FORMAT,
 } from "utils/constants";
 
-
 import styles from "./FilmForm.module.scss";
 
-export default function FilmForm({ title, name, submitText }) {
+export default function FilmForm({
+  title,
+  name,
+  submitText,
+  onSubmit,
+  onDelete,
+  mode,
+  film,
+}) {
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
+    defaultValues: {
+      filmInfo: {
+        title: "",
+        director: "",
+        year: "",
+        poster: "",
+      },
+    },
   });
 
-  const dispatch = useDispatch();
-
-  function submitForm(data) {
-    const newFilm = {
-      id: nanoid(),
-      title: data.title,
-      director: data.director,
-      year: data.year,
-      poster: data.poster,
-    };
-    dispatch(addFilm(newFilm));
-    dispatch(closeModal());
+  function handleSubmitForm(data) {
+    onSubmit(data.filmInfo);
     setTimeout(() => {
       reset();
     }, 200);
   }
 
+  React.useEffect(() => {
+    if (mode === "edit") {
+      setValue(
+        "filmInfo",
+        {
+          title: film.title,
+          director: film.director,
+          year: film.year,
+          poster: film.poster,
+        },
+        { shouldValidate: true }
+      );
+    }
+  }, [mode, setValue, film]);
+
   return (
     <form
       className={styles.root}
       name={name}
-      onSubmit={handleSubmit(submitForm)}
+      onSubmit={handleSubmit(handleSubmitForm)}
     >
       <h2 className={styles.title}>{title}</h2>
       <hr className={styles.line} />
       <Input
         type="text"
-        name="title"
+        name="filmInfo.title"
         register={register}
-        errors={errors?.title}
+        errors={errors.filmInfo?.title}
         classInput={styles.input}
         classErrors={styles.error}
         maxLength={51}
@@ -82,9 +100,9 @@ export default function FilmForm({ title, name, submitText }) {
       />
       <Input
         type="text"
-        name="director"
+        name="filmInfo.director"
         register={register}
-        errors={errors?.director}
+        errors={errors.filmInfo?.director}
         classInput={styles.input}
         classErrors={styles.error}
         maxLength={41}
@@ -103,9 +121,9 @@ export default function FilmForm({ title, name, submitText }) {
       />
       <Input
         type="text"
-        name="year"
+        name="filmInfo.year"
         register={register}
-        errors={errors?.year}
+        errors={errors.filmInfo?.year}
         classInput={styles.input}
         classErrors={styles.error}
         maxLength={4}
@@ -120,9 +138,9 @@ export default function FilmForm({ title, name, submitText }) {
       />
       <Input
         type="text"
-        name="poster"
+        name="filmInfo.poster"
         register={register}
-        errors={errors?.poster}
+        errors={errors.filmInfo?.poster}
         classInput={styles.input}
         classErrors={styles.error}
         placeholder="Введите ссылку на постер фильма"
@@ -135,13 +153,20 @@ export default function FilmForm({ title, name, submitText }) {
         }}
       />
       <div className={styles["buttons-container"]}>
-        <Button 
+        <Button
           type="submit"
-          className={`${styles.submit} ${!isValid && styles.inactive}`}
           buttonText={submitText}
           disabled={!isValid}
-          mode={["mode_form-button", "submit", `${!isValid && 'inactive'}`]}
+          mode={["mode_form-button", "submit", `${!isValid && "inactive"}`]}
         />
+        {mode === "edit" && (
+          <Button
+            type="button"
+            buttonText="Удалить"
+            mode={["mode_form-button", "delete"]}
+            onClick={onDelete}
+          />
+        )}
       </div>
     </form>
   );

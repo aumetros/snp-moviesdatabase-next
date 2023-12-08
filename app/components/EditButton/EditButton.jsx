@@ -3,18 +3,18 @@ import { openModal } from "store/slices/modalsSlice";
 import { setPreview } from "store/slices/filmsSlice";
 import Button from "components/Button";
 
-export default function PreviewButton({ film }) {
+export default function EditButton({ film }) {
   const dispatch = useDispatch();
 
-  function handleClickPreview() {
+  function handleEditClick() {
     dispatch(setPreview(film));
-    dispatch(openModal("previewFilm"));
+    dispatch(openModal("editFilm"));
   }
+
   return (
     <Button
-      type="button"
-      onClick={handleClickPreview}
-      mode={["mode_film-button", "preview"]}
+      onClick={handleEditClick}
+      mode={["mode_film-button", "edit"]}
     />
   );
 }
