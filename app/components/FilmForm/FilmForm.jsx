@@ -37,10 +37,18 @@ export default function FilmForm({
     formState: { errors, isValid },
   } = useForm({
     mode: "onChange",
+    defaultValues: {
+      filmInfo: {
+        title: "",
+        director: "",
+        year: "",
+        poster: "",
+      },
+    },
   });
 
   function handleSubmitForm(data) {
-    onSubmit(data);
+    onSubmit(data.filmInfo);
     setTimeout(() => {
       reset();
     }, 200);
@@ -48,10 +56,16 @@ export default function FilmForm({
 
   React.useEffect(() => {
     if (mode === "edit") {
-      setValue("title", film.title, { shouldValidate: true });
-      setValue("director", film.director, { shouldValidate: true });
-      setValue("year", film.year, { shouldValidate: true });
-      setValue("poster", film.poster, { shouldValidate: true });
+      setValue(
+        "filmInfo",
+        {
+          title: film.title,
+          director: film.director,
+          year: film.year,
+          poster: film.poster,
+        },
+        { shouldValidate: true }
+      );
     }
   }, [mode, setValue, film]);
 
@@ -65,9 +79,9 @@ export default function FilmForm({
       <hr className={styles.line} />
       <Input
         type="text"
-        name="title"
+        name="filmInfo.title"
         register={register}
-        errors={errors?.title}
+        errors={errors.filmInfo?.title}
         classInput={styles.input}
         classErrors={styles.error}
         maxLength={51}
@@ -86,9 +100,9 @@ export default function FilmForm({
       />
       <Input
         type="text"
-        name="director"
+        name="filmInfo.director"
         register={register}
-        errors={errors?.director}
+        errors={errors.filmInfo?.director}
         classInput={styles.input}
         classErrors={styles.error}
         maxLength={41}
@@ -107,9 +121,9 @@ export default function FilmForm({
       />
       <Input
         type="text"
-        name="year"
+        name="filmInfo.year"
         register={register}
-        errors={errors?.year}
+        errors={errors.filmInfo?.year}
         classInput={styles.input}
         classErrors={styles.error}
         maxLength={4}
@@ -124,9 +138,9 @@ export default function FilmForm({
       />
       <Input
         type="text"
-        name="poster"
+        name="filmInfo.poster"
         register={register}
-        errors={errors?.poster}
+        errors={errors.filmInfo?.poster}
         classInput={styles.input}
         classErrors={styles.error}
         placeholder="Введите ссылку на постер фильма"
