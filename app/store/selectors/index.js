@@ -8,3 +8,6 @@ export const selectFilms = (state) => state.films.entities;
 
 /**Селектор предпросмотра фильма */
 export const selectPreview = (state) => state.films.preview;
+
+/**Селектор фильтра фильмов */
+export const selectFilter = (state) => state.filters.filter;
