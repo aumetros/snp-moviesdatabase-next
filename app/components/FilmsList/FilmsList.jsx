@@ -9,10 +9,15 @@ import styles from "./FilmsList.module.scss";
 export default function FilmsList() {
   const dispatch = useDispatch();
   const films = useSelector(selectFilms);
-  const filter = useSelector(selectFilter);
+  const searchFilter = useSelector(selectFilter);
 
   const filterFilms = (filter) => (film) =>
-    film.title.toLowerCase().includes((filter).toLowerCase());
+    film.title.toLowerCase().includes(filter.toLowerCase());
+
+  const filmsList = React.useMemo(
+    () => films.filter(filterFilms(searchFilter)),
+    [films, searchFilter]
+  );
 
   React.useEffect(() => {
     if (localStorage.getItem("filmsState") !== null) {
@@ -22,7 +27,7 @@ export default function FilmsList() {
 
   return (
     <ul className={styles.root}>
-      {films.filter(filterFilms(filter)).map((film) => {
+      {filmsList.map((film) => {
         return <Film key={film.id} film={film} />;
       })}
     </ul>
