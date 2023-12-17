@@ -60,6 +60,7 @@ export default function FilmPage({ params }) {
           className={styles["return-btn"]}
           onClick={() => router.back()}
         ></button>
+        <span className={styles["return-text"]}>назад</span>
       </div>
     </section>
   );
