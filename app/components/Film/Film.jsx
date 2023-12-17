@@ -1,6 +1,5 @@
 "use client";
-import { useRouter } from 'next/navigation'
-
+import { useRouter } from 'next/navigation';
 import PreviewButton from "components/PreviewButton";
 import EditButton from "components/EditButton";
 import styles from "./Film.module.scss";

@@ -1,6 +1,7 @@
 .root {
-  padding: 10px 40px 10px;
   position: relative;
+  padding: 10px 40px 10px;
+  flex-grow: 1;
 }
 
 .title {
@@ -33,10 +34,10 @@
 }
 
 .caption {
+  margin-top: 8px;
   font-size: 14px;
   font-weight: 400;
   line-height: 15px;
-  margin-top: 8px;
 }
 
 .description {
@@ -64,17 +65,17 @@
 }
 
 .return-btn {
+  position: relative;
   width: 30px;
   height: 30px;
+  padding: 0;
+  border: 0;
   background-color: transparent;
   background-image: url(/back-btn.svg);
   background-size: contain;
-  border: 0;
-  padding: 0;
   opacity: 0.7;
   transition: all 0.3s;
   cursor: pointer;
-  position: relative;
 }
 
 .return-btn:hover {
@@ -83,16 +84,16 @@
 
 .return-btn::after {
   content: "назад";
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 400;
-  line-height: 10px;
   position: absolute;
   bottom: -18px;
   left: 0;
-  transition: all 0.3s;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 10px;
   letter-spacing: 0.7px;
+  color: #ffffff;
   opacity: 0;
+  transition: all 0.3s;
 }
 
 .return-btn:hover::after {

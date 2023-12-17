@@ -1,17 +1,28 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { selectFilms } from "store/selectors";
 import styles from "./FilmPage.module.scss";
 
 export default function FilmPage({ params }) {
   const films = useSelector(selectFilms);
+  const router = useRouter();
+  const [srcPoster, setSrcPoster] = React.useState("");
+
+  function handleErrorPoster() {
+    setSrcPoster("/no-poster.jpg");
+  }
 
   const filmForPage = React.useMemo(
     () => films.find((film) => film.id === params.id),
     [films, params]
   );
+
+  React.useEffect(() => {
+    setSrcPoster(filmForPage?.poster);
+  }, [filmForPage]);
 
   return (
     <section className={styles.root}>
@@ -20,10 +31,12 @@ export default function FilmPage({ params }) {
         <figure className={styles.figure}>
           <Image
             className={styles.poster}
-            src={filmForPage?.poster}
+            src={srcPoster || "/no-poster.jpg"}
             alt={`Постер фильма ${filmForPage?.title}`}
             width={300}
             height={400}
+            onError={handleErrorPoster}
+            priority
           />
 
           <figcaption
@@ -32,7 +45,9 @@ export default function FilmPage({ params }) {
         </figure>
         <div className={styles?.description}>
           <p className={styles["description-title"]}>Название фильма:</p>
-          <p className={styles["description-text"]}>{filmForPage?.title}</p>
+          <p
+            className={styles["description-text"]}
+          >{`"${filmForPage?.title}"`}</p>
           <p className={styles["description-title"]}>Режиссер фильма:</p>
           <p className={styles["description-text"]}>{filmForPage?.director}</p>
           <p className={styles["description-title"]}>Год создания фильма:</p>
@@ -43,7 +58,7 @@ export default function FilmPage({ params }) {
         <button
           type="button"
           className={styles["return-btn"]}
-          onClick={() => navigate(-1)}
+          onClick={() => router.back()}
         ></button>
       </div>
     </section>
