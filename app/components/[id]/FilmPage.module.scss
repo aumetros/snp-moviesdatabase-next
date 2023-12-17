@@ -1,0 +1,100 @@
+.root {
+  padding: 10px 40px 10px;
+  position: relative;
+}
+
+.title {
+  margin: 0 auto 10px;
+  max-width: 350px;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+.container {
+  display: flex;
+}
+
+.figure {
+  margin: 0;
+  padding: 16px 40px;
+  width: 300px;
+}
+
+.poster {
+  width: 300px;
+  height: 400px;
+  padding: 0;
+  border: 1px #000000 solid;
+  box-sizing: border-box;
+  object-fit: cover;
+  box-shadow: 4px 4px 8px 0px rgba(0, 0, 0, 0.27);
+}
+
+.caption {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 15px;
+  margin-top: 8px;
+}
+
+.description {
+  padding: 16px 0;
+}
+
+.description-title {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.description-text {
+  margin: 0 0 40px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.return {
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
+
+.return-btn {
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  background-image: url(../../images/back-btn.svg);
+  background-size: contain;
+  border: 0;
+  padding: 0;
+  opacity: 0.7;
+  transition: all 0.3s;
+  cursor: pointer;
+  position: relative;
+}
+
+.return-btn:hover {
+  opacity: 1;
+}
+
+.return-btn::after {
+  content: "назад";
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 10px;
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  transition: all 0.3s;
+  letter-spacing: 0.7px;
+  opacity: 0;
+}
+
+.return-btn:hover::after {
+  opacity: 1;
+}
