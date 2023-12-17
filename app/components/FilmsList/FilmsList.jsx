@@ -1,14 +1,21 @@
 "use client";
 import React from "react";
 import Film from "components/Film";
+import { useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
-import { selectFilms, selectFilter } from "store/selectors";
+import { selectFilms } from "store/selectors";
 
 import styles from "./FilmsList.module.scss";
 
 export default function FilmsList() {
+  const searchParams = useSearchParams();
   const films = useSelector(selectFilms);
-  const searchFilter = useSelector(selectFilter);
+
+  let searchFilter;
+
+  searchParams?.has("search")
+    ? (searchFilter = searchParams.get("search"))
+    : (searchFilter = "");
 
   const filterFilms = (filter) => (film) =>
     film.title.toLowerCase().includes(filter.toLowerCase());
