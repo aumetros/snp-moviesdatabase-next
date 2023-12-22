@@ -1,7 +1,7 @@
 "use client";
 import { useDispatch } from "react-redux";
 import { closeModal } from "store/slices/modalsSlice";
-import { resetPreview } from "store/slices/filmsSlice";
+import { setPreview } from "store/slices/filmsSlice";
 import styles from "./Modal.module.scss";
 import React from "react";
 
@@ -12,7 +12,7 @@ export default function Modal({ children, isOpen }) {
   const handleCloseModal = React.useCallback(() => {
     dispatch(closeModal());
     setTimeout(() => {
-      dispatch(resetPreview());
+      dispatch(setPreview({}));
     }, 300)
   }, [dispatch]);
 

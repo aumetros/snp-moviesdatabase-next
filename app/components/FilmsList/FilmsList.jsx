@@ -2,12 +2,22 @@
 import React from "react";
 import Film from "components/Film";
 import { useSelector, useDispatch } from "react-redux";
-import { selectFilms } from "store/selectors";
+import { selectFilms, selectFilter } from "store/selectors";
 import { setFilms } from "store/slices/filmsSlice";
 import styles from "./FilmsList.module.scss";
 
 export default function FilmsList() {
   const dispatch = useDispatch();
+  const films = useSelector(selectFilms);
+  const searchFilter = useSelector(selectFilter);
+
+  const filterFilms = (filter) => (film) =>
+    film.title.toLowerCase().includes(filter.toLowerCase());
+
+  const filmsList = React.useMemo(
+    () => films.filter(filterFilms(searchFilter)),
+    [films, searchFilter]
+  );
 
   React.useEffect(() => {
     if (localStorage.getItem("filmsState") !== null) {
@@ -15,10 +25,9 @@ export default function FilmsList() {
     }
   }, [dispatch]);
 
-  const films = useSelector(selectFilms);
   return (
     <ul className={styles.root}>
-      {films.map((film) => {
+      {filmsList.map((film) => {
         return <Film key={film.id} film={film} />;
       })}
     </ul>

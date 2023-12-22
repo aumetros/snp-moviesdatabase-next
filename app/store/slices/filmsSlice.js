@@ -20,9 +20,6 @@ const filmsSlice = createSlice({
     setPreview(state, { payload }) {
       state.preview = payload;
     },
-    resetPreview(state) {
-      state.preview = {};
-    },
     editFilm(state, { payload }) {
       const { filmId, data } = payload;
       state.entities = state.entities.map((film) => {
@@ -50,7 +47,6 @@ export const {
   setFilms,
   addFilm,
   setPreview,
-  resetPreview,
   editFilm,
   deleteFilm,
 } = filmsSlice.actions;
