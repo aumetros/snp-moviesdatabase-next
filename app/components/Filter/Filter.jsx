@@ -4,6 +4,7 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFilter } from "store/selectors";
 import { setFilter } from "store/slices/filtersSlice";
+import { FILTER_PLACEHOLDER } from "utils/constants";
 import styles from "./Filter.module.scss";
 
 export default function Filter() {
@@ -31,7 +32,7 @@ export default function Filter() {
   }
 
   function handlerInputBlur(e) {
-    e.target.placeholder = "Введите текст для поиска";
+    e.target.placeholder = FILTER_PLACEHOLDER;
   }
 
   React.useEffect(() => {
@@ -53,7 +54,7 @@ export default function Filter() {
         name="filmsFilter"
         id="filmsFilter"
         value={filterValue}
-        placeholder="Введите текст для поиска"
+        placeholder={FILTER_PLACEHOLDER}
         onChange={handleChangeFilter}
         onFocus={handlerInputFocus}
         onBlur={handlerInputBlur}
