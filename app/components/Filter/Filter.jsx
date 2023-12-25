@@ -24,13 +24,24 @@ export default function Filter() {
 
   function handleChangeFilter(e) {
     dispatch(setFilter(e.target.value));
-    router.push(pathname + "?" + createQueryString("search", e.target.value));
+  }
+
+  function handlerInputFocus(e) {
+    e.target.placeholder = "";
+  }
+
+  function handlerInputBlur(e) {
+    e.target.placeholder = "Введите текст для поиска";
   }
 
   React.useEffect(() => {
-    searchParams?.has("search")
-      ? dispatch(setFilter(searchParams.get("search")))
-      : null;
+    router.push(pathname + "?" + createQueryString("search", filterValue));
+  }, [filterValue, router, pathname, createQueryString]);
+
+  React.useEffect(() => {
+    if (searchParams?.has("search")) {
+      dispatch(setFilter(searchParams.get("search")));
+    }
   }, [dispatch, searchParams]);
 
   return (
@@ -44,8 +55,8 @@ export default function Filter() {
         value={filterValue}
         placeholder="Введите текст для поиска"
         onChange={handleChangeFilter}
-        onFocus={(e) => (e.target.placeholder = "")}
-        onBlur={(e) => (e.target.placeholder = "Введите текст для поиска")}
+        onFocus={handlerInputFocus}
+        onBlur={handlerInputBlur}
       />
     </section>
   );
