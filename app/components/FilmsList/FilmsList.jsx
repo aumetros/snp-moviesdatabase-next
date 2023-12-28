@@ -1,15 +1,17 @@
 "use client";
 import React from "react";
 import Film from "components/Film";
-import { useSelector, useDispatch } from "react-redux";
-import { selectFilms, selectFilter } from "store/selectors";
-import { setFilms } from "store/slices/filmsSlice";
+import { useSearchParams } from "next/navigation";
+import { useSelector } from "react-redux";
+import { selectFilms } from "store/selectors";
+
 import styles from "./FilmsList.module.scss";
 
 export default function FilmsList() {
-  const dispatch = useDispatch();
+  const searchParams = useSearchParams();
   const films = useSelector(selectFilms);
-  const searchFilter = useSelector(selectFilter);
+
+  const searchFilter = searchParams.get("search") || "";
 
   const filterFilms = (filter) => (film) =>
     film.title.toLowerCase().includes(filter.toLowerCase());
@@ -18,12 +20,6 @@ export default function FilmsList() {
     () => films.filter(filterFilms(searchFilter)),
     [films, searchFilter]
   );
-
-  React.useEffect(() => {
-    if (localStorage.getItem("filmsState") !== null) {
-      dispatch(setFilms(JSON.parse(localStorage.getItem("filmsState"))));
-    }
-  }, [dispatch]);
 
   return (
     <ul className={styles.root}>
