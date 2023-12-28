@@ -16,6 +16,7 @@
 
 .logo-container {
   display: flex;
+  cursor: pointer;
 
   @include mobile {
     margin: 10px 0;

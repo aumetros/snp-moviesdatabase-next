@@ -1,10 +1,12 @@
 import Main from "components/Main";
 import FilmsList from "components/FilmsList";
+import Filter from "components/Filter";
 
 export default function Home() {
   return (
     <Main>
-      <FilmsList />      
+      <Filter />
+      <FilmsList />
     </Main>
-  )
+  );
 }

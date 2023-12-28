@@ -1,0 +1,33 @@
+.root {
+  display: flex;
+  min-height: 25px;
+  padding: 12px 0;
+}
+
+.logo {
+  width: 25px;
+  height: 25px;
+  margin: 0 10px;
+  background-image: url(/search.svg);
+  background-size: contain;
+}
+
+.input {
+  width: 400px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  color: var(--grayscale-white);
+  background-color: var(--primary-blue-deep);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 19px;
+
+  &::placeholder {
+    color: var(--grayscale-grey-ph);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18px;
+  }
+}
