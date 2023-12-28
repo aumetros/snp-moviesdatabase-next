@@ -11,9 +11,7 @@ export default function FilmsList() {
   const searchParams = useSearchParams();
   const films = useSelector(selectFilms);
 
-  const searchFilter = searchParams?.has("search")
-    ? searchParams.get("search")
-    : "";
+  const searchFilter = searchParams.get("search") || "";
 
   const filterFilms = (filter) => (film) =>
     film.title.toLowerCase().includes(filter.toLowerCase());
