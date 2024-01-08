@@ -1,0 +1,81 @@
+{
+  "entities": [
+      {
+          "id": "9StamfvYp8FF3d1hI3qJY",
+          "title": "Робокоп",
+          "director": "Пол Верховен",
+          "year": "1987",
+          "poster": "https://moviebot.ru/reductor.php?file=aHR0cHM6Ly9pbWFnZS50bWRiLm9yZy90L3Avdzc4MC83b29RZm4xOTRHejRZd0puM2hRajhNUE1XQlEuanBn"
+      },
+      {
+          "id": "b_MZClNe83q0QbVBRHXzz",
+          "title": "Робокоп 2",
+          "director": "Ирвин Кершнер",
+          "year": "1990",
+          "poster": "https://images.justwatch.com/poster/178293878/s718/robocop-2.%7Bformat%7D"
+      },
+      {
+          "id": "JNbzlm8IwGYlUFr90TxIK",
+          "title": "Алладин",
+          "director": " Рон Клементс, Джон Маскер",
+          "year": "1992",
+          "poster": "http://klublady.ru/uploads/posts/2022-07/1658319062_56-klublady-ru-p-tatu-alladin-foto-56.jpg"
+      },
+      {
+          "id": "skEQHJhariZEkRAYxhnR3",
+          "title": "В поисках Капитана Немо",
+          "director": "Эндрю Стэнтон, Ли Анкрич",
+          "year": "2003",
+          "poster": "https://www.timeout.ru/wp-content/uploads/kpposters/7908.jpg"
+      },
+      {
+          "id": "BjudPFSD2mFQRsF94k4Ni",
+          "title": "Пираты карибского моря",
+          "director": " Гор Вербински",
+          "year": "2003",
+          "poster": "https://www.timeout.ru/wp-content/uploads/kpposters/4374.jpg"
+      },
+      {
+          "id": "ZMdZnj7Oz8YwejyEdwZcP",
+          "title": "Джокер",
+          "director": "Тодд Филлиппс",
+          "year": "2013",
+          "poster": "https://i.mycdn.me/i?r=AzEPZsRbOZEKgBhR0XGMT1Rk9pR-9G1oF1aaeLUJ-fViJ6aKTM5SRkZCeTgDn6uOyic"
+      },
+      {
+          "id": "eB5nImV5UYw8kRbiegtL9",
+          "title": "Бэтман",
+          "director": "Тим Бертон",
+          "year": "1989",
+          "poster": "https://f.otzyv.ru/f/kino/1989/9895/poster_9895.jpg"
+      },
+      {
+          "id": "6Uud0XNlltdMJiE6tOuDh",
+          "title": "Идеальный шторм",
+          "director": "Вольфганг Петерсен",
+          "year": "2000",
+          "poster": "https://content.api.news/v3/images/bin/e9303051e826ec43cabc1003a4c479b3"
+      },
+      {
+          "id": "LQZuA04M39PC3To6BtyBS",
+          "title": "Эйс Вентура Вай Вай",
+          "director": "Том Шедьяк",
+          "year": "1999",
+          "poster": "https://www.timeout.ru/wp-content/uploads/kpposters/2868.jpg"
+      },
+      {
+          "id": "zguU4NvbNzVFdqgOXwYP8",
+          "title": "2001 год: Космическая одиссея",
+          "director": "Стэнли Кубрик",
+          "year": "1968",
+          "poster": "https://i.pinimg.com/736x/87/b7/dc/87b7dc29d14baaa5e907a46da19ca9f4.jpg"
+      },
+      {
+          "id": "9cg08Rbxxzu0vgO6LMmnt",
+          "title": "Маленькая Мисс Счастье",
+          "director": "Джонатан Дэйтон, Валери Фэрис",
+          "year": "2008",
+          "poster": "https://avatars.mds.yandex.net/get-kinopoisk-image/1777765/7352dc73-b956-4e9d-8564-b133dd0fe355/1920x"
+      }
+  ]
+}
