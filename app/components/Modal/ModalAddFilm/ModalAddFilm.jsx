@@ -1,6 +1,5 @@
 "use client";
-import { nanoid } from "@reduxjs/toolkit";
-import { addFilm } from "store/slices/filmsSlice";
+import { addFilm, addNewFilm } from "store/slices/filmsSlice";
 import { closeModal } from "store/slices/modalsSlice";
 import { useSelector } from "react-redux";
 import { selectModals } from "store/selectors";
@@ -14,13 +13,12 @@ export default function ModalAddFilm() {
 
   function submitForm(data) {
     const newFilm = {
-      id: nanoid(),
       title: data.title,
       director: data.director,
       year: data.year,
       poster: data.poster,
     };
-    dispatch(addFilm(newFilm));
+    dispatch(addNewFilm(newFilm));
     dispatch(closeModal());
   }
 

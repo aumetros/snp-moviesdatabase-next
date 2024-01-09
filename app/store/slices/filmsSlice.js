@@ -1,18 +1,18 @@
 "use client";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getFilms } from "utils/api";
+import { addFilmToDB } from "utils/api";
 
-// export const fetchFilms = createAsyncThunk(
-//   "films/fetchFilms",
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       const films = await getFilms();
-//       return films;
-//     } catch (err) {
-//       return rejectWithValue(err.response.data);
-//     }
-//   }
-// );
+export const addNewFilm = createAsyncThunk(
+  "films/addNewFilm",
+  async (data, { rejectWithValue, dispatch }) => {
+    try {
+      const newFilm = await addFilmToDB(data);
+      dispatch(addFilm(newFilm));
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
 
 const initialState = {
   entities: [],
@@ -28,7 +28,6 @@ const filmsSlice = createSlice({
     },
     addFilm(state, { payload }) {
       state.entities.push(payload);
-      localStorage.setItem("filmsState", JSON.stringify(state));
     },
     setPreview(state, { payload }) {
       state.preview = payload;
@@ -54,14 +53,14 @@ const filmsSlice = createSlice({
       localStorage.setItem("filmsState", JSON.stringify(state));
     },
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(fetchFilms.fulfilled, (state, { payload }) => {
-  //     state.entities = payload.entities;
-  //   });
-  //   builder.addCase(fetchFilms.rejected, (state, { payload }) => {
-  //     console.log(payload);
-  //   });
-  // },
+  extraReducers: (builder) => {
+    builder.addCase(addNewFilm.rejected, (state, { payload }) => {
+      return { message: payload };
+    });
+    // builder.addCase(fetchFilms.rejected, (state, { payload }) => {
+    //   console.log(payload);
+    // });
+  },
 });
 
 export const { setFilms, addFilm, setPreview, editFilm, deleteFilm } =
