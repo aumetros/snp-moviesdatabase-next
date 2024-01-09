@@ -1,5 +1,18 @@
 "use client";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { getFilms } from "utils/api";
+
+// export const fetchFilms = createAsyncThunk(
+//   "films/fetchFilms",
+//   async (_, { rejectWithValue }) => {
+//     try {
+//       const films = await getFilms();
+//       return films;
+//     } catch (err) {
+//       return rejectWithValue(err.response.data);
+//     }
+//   }
+// );
 
 const initialState = {
   entities: [],
@@ -41,14 +54,17 @@ const filmsSlice = createSlice({
       localStorage.setItem("filmsState", JSON.stringify(state));
     },
   },
+  // extraReducers: (builder) => {
+  //   builder.addCase(fetchFilms.fulfilled, (state, { payload }) => {
+  //     state.entities = payload.entities;
+  //   });
+  //   builder.addCase(fetchFilms.rejected, (state, { payload }) => {
+  //     console.log(payload);
+  //   });
+  // },
 });
 
-export const {
-  setFilms,
-  addFilm,
-  setPreview,
-  editFilm,
-  deleteFilm,
-} = filmsSlice.actions;
+export const { setFilms, addFilm, setPreview, editFilm, deleteFilm } =
+  filmsSlice.actions;
 
 export default filmsSlice.reducer;
