@@ -24,7 +24,7 @@ const filmsSlice = createSlice({
   initialState,
   reducers: {
     setFilms(state, { payload }) {
-      state.entities = payload.entities;
+      state.entities = payload;
     },
     addFilm(state, { payload }) {
       state.entities.push(payload);

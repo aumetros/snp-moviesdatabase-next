@@ -1,11 +1,11 @@
-function checkResponse(res) {
-  if (res.ok) {
-    return res.json();
+function checkResponse(res, message) {
+  if (!res.ok) {
+    throw new Error(message);
   }
-  return Promise.reject(res.status);
+  return res.json();
 }
 
 export async function getFilms() {
   const res = await fetch("http://localhost:3000/films");
-  return checkResponse(res);
+  return checkResponse(res, "Failed to fetch data");
 }

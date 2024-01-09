@@ -1,12 +1,14 @@
 "use client";
-
+import { useRef } from "react";
 import { Provider } from "react-redux";
-import store from "store";
+import { makeStore } from "store";
+import { setFilms } from "./slices/filmsSlice";
 
-export function StoreProvider({ children }) {
-  return (
-    <Provider store={store}>
-      {children}
-    </Provider>
-  )
+export default function StoreProvider({ films, children }) {
+  const storeRef = useRef();
+  if (!storeRef.current) {
+    storeRef.current = makeStore();
+    storeRef.current.dispatch(setFilms(films));
+  }
+  return <Provider store={storeRef.current}>{children}</Provider>;
 }

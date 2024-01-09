@@ -6,7 +6,8 @@ import Footer from "components/Footer";
 import ModalAddFilm from "components/Modal/ModalAddFilm";
 import ModalPreviewFilm from "components/Modal/ModalPreviewFilm";
 import ModalEditFilm from "components/Modal/ModalEditFilm";
-import { StoreProvider } from "store/StoreProvider";
+import StoreProvider from "store/StoreProvider";
+import { getFilms } from "utils/api";
 
 const openSans = Open_Sans({
   weight: ["400", "500", "700"],
@@ -22,11 +23,13 @@ export const metadata = {
   author: "Алексей Шевляков",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const films = await getFilms();
+
   return (
     <html lang="ru">
       <body className={openSans.className}>
-        <StoreProvider>
+        <StoreProvider films={films}>
           <Container>
             <Header />
             {children}
