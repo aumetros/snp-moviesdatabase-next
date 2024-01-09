@@ -1,6 +1,18 @@
 "use client";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addFilmToDB, editFilmInDB, deleteFilmInDB } from "utils/api";
+import { addFilmToDB, editFilmInDB, deleteFilmInDB, getFilms } from "utils/api";
+
+export const fetchFilms = createAsyncThunk(
+  "films/fetchFilms",
+  async (_, { rejectWithValue, dispatch }) => {
+    try {
+      const films = await getFilms();
+      dispatch(setFilms(films));
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
 
 export const addNewFilm = createAsyncThunk(
   "films/addNewFilm",
@@ -73,10 +85,12 @@ const filmsSlice = createSlice({
     },
     deleteFilm(state, { payload }) {
       state.entities = state.entities.filter((film) => film.id !== payload);
-      localStorage.setItem("filmsState", JSON.stringify(state));
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchFilms.rejected, (state, { payload }) => {
+      return { message: payload };
+    });
     builder.addCase(addNewFilm.rejected, (state, { payload }) => {
       return { message: payload };
     });

@@ -7,7 +7,6 @@ import ModalAddFilm from "components/Modal/ModalAddFilm";
 import ModalPreviewFilm from "components/Modal/ModalPreviewFilm";
 import ModalEditFilm from "components/Modal/ModalEditFilm";
 import StoreProvider from "store/StoreProvider";
-import { getFilms } from "utils/api";
 
 const openSans = Open_Sans({
   weight: ["400", "500", "700"],
@@ -24,12 +23,10 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  const films = await getFilms();
-
   return (
     <html lang="ru">
       <body className={openSans.className}>
-        <StoreProvider films={films}>
+        <StoreProvider>
           <Container>
             <Header />
             {children}
