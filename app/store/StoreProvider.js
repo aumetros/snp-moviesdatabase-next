@@ -9,7 +9,6 @@ export default function StoreProvider({ films, children }) {
   if (!storeRef.current) {
     storeRef.current = makeStore();
     storeRef.current.dispatch(setFilms(films));
-    console.log(films);
   }
   return <Provider store={storeRef.current}>{children}</Provider>;
 }

@@ -1,6 +1,6 @@
 "use client";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addFilmToDB, editFilmInDB } from "utils/api";
+import { addFilmToDB, editFilmInDB, deleteFilmInDB } from "utils/api";
 
 export const addNewFilm = createAsyncThunk(
   "films/addNewFilm",
@@ -20,6 +20,18 @@ export const editExistFilm = createAsyncThunk(
     try {
       const film = await editFilmInDB({ filmId, data });
       dispatch(editFilm({ filmId: film.id, data }));
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const deleteExistFilm = createAsyncThunk(
+  "films/deleteExistFilm",
+  async (filmId, { rejectWithValue, dispatch }) => {
+    try {
+      const film = await deleteFilmInDB(filmId);
+      dispatch(deleteFilm(film.id));
     } catch (err) {
       return rejectWithValue(err.message);
     }
@@ -69,6 +81,9 @@ const filmsSlice = createSlice({
       return { message: payload };
     });
     builder.addCase(editExistFilm.rejected, (state, { payload }) => {
+      return { message: payload };
+    });
+    builder.addCase(deleteExistFilm.rejected, (state, { payload }) => {
       return { message: payload };
     });
   },

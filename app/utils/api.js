@@ -1,4 +1,10 @@
-import { DB_LINK, FAILED_FETCH, FAILED_ADD, FAILED_EDIT } from "./constants";
+import {
+  DB_LINK,
+  FAILED_FETCH,
+  FAILED_ADD,
+  FAILED_EDIT,
+  FAILED_DELETE,
+} from "./constants";
 
 function checkResponse(res, message) {
   if (!res.ok) {
@@ -35,4 +41,15 @@ export async function editFilmInDB({ filmId, data }) {
   });
 
   return checkResponse(res, FAILED_EDIT);
+}
+
+export async function deleteFilmInDB(filmId) {
+  const res = await fetch(`${DB_LINK}/films/${filmId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return checkResponse(res, FAILED_DELETE);
 }
