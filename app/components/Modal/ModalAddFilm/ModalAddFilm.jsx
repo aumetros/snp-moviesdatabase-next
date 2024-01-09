@@ -1,5 +1,5 @@
 "use client";
-import { addFilm, addNewFilm } from "store/slices/filmsSlice";
+import { addNewFilm } from "store/slices/filmsSlice";
 import { closeModal } from "store/slices/modalsSlice";
 import { useSelector } from "react-redux";
 import { selectModals } from "store/selectors";
@@ -31,5 +31,5 @@ export default function ModalAddFilm() {
         onSubmit={submitForm}
       />
     </Modal>
-  ); 
+  );
 }

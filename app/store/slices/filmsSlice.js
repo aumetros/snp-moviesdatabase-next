@@ -1,6 +1,6 @@
 "use client";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addFilmToDB } from "utils/api";
+import { addFilmToDB, editFilmInDB } from "utils/api";
 
 export const addNewFilm = createAsyncThunk(
   "films/addNewFilm",
@@ -8,6 +8,18 @@ export const addNewFilm = createAsyncThunk(
     try {
       const newFilm = await addFilmToDB(data);
       dispatch(addFilm(newFilm));
+    } catch (err) {
+      return rejectWithValue(err.message);
+    }
+  }
+);
+
+export const editExistFilm = createAsyncThunk(
+  "films/editExistFilm",
+  async ({ filmId, data }, { rejectWithValue, dispatch }) => {
+    try {
+      const film = await editFilmInDB({ filmId, data });
+      dispatch(editFilm({ filmId: film.id, data }));
     } catch (err) {
       return rejectWithValue(err.message);
     }
@@ -46,7 +58,6 @@ const filmsSlice = createSlice({
         }
         return film;
       });
-      localStorage.setItem("filmsState", JSON.stringify(state));
     },
     deleteFilm(state, { payload }) {
       state.entities = state.entities.filter((film) => film.id !== payload);
@@ -57,9 +68,9 @@ const filmsSlice = createSlice({
     builder.addCase(addNewFilm.rejected, (state, { payload }) => {
       return { message: payload };
     });
-    // builder.addCase(fetchFilms.rejected, (state, { payload }) => {
-    //   console.log(payload);
-    // });
+    builder.addCase(editExistFilm.rejected, (state, { payload }) => {
+      return { message: payload };
+    });
   },
 });
 

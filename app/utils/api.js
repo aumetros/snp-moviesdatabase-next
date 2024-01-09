@@ -1,4 +1,4 @@
-import { DB_LINK, FAILED_FETCH, FAILED_ADD } from "./constants";
+import { DB_LINK, FAILED_FETCH, FAILED_ADD, FAILED_EDIT } from "./constants";
 
 function checkResponse(res, message) {
   if (!res.ok) {
@@ -9,7 +9,7 @@ function checkResponse(res, message) {
 
 export async function getFilms() {
   const res = await fetch(`${DB_LINK}/films`);
-  
+
   return checkResponse(res, FAILED_FETCH);
 }
 
@@ -23,4 +23,16 @@ export async function addFilmToDB(data) {
   });
 
   return checkResponse(res, FAILED_ADD);
+}
+
+export async function editFilmInDB({ filmId, data }) {
+  const res = await fetch(`${DB_LINK}/films/${filmId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+
+  return checkResponse(res, FAILED_EDIT);
 }

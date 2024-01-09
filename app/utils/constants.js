@@ -27,3 +27,4 @@ export const DB_LINK = "http://localhost:3000";
 /**Сообщения ошибок при обращении к серверу */
 export const FAILED_FETCH = "Failed to fetch data";
 export const FAILED_ADD = "Can\'t add film. Server error.";
+export const FAILED_EDIT = "Can\'t edit film. Server error.";
