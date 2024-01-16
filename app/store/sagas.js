@@ -10,8 +10,8 @@ import {
   addNewFilm,
   editFilm,
   deleteFilm,
-  handleFilmError,
 } from "./slices/filmsSlice";
+import { setError } from "./slices/errorsSlice";
 import {
   GET_FILMS,
   ADD_FILM,
@@ -24,7 +24,7 @@ export function* getFilmsSaga() {
     const films = yield getFilmsApi();
     yield put(setFilms(films));
   } catch (err) {
-    yield put(handleFilmError(err.message));
+    yield put(setError(err.message));
   }
 }
 
@@ -33,7 +33,7 @@ export function* addFilmSaga({ payload }) {
     const newFilm = yield addFilmToDB(payload);
     yield put(addNewFilm(newFilm));
   } catch (err) {
-    yield put(handleFilmError(err.message));
+    yield put(setError(err.message));
   }
 }
 
@@ -43,7 +43,7 @@ export function* editFilmSaga({ payload }) {
     const film = yield editFilmInDB({ filmId, data });
     yield put(editFilm({ filmId: film.id, data }));
   } catch (err) {
-    yield put(handleFilmError(err.message));
+    yield put(setError(err.message));
   }
 }
 
@@ -52,7 +52,7 @@ export function* deleteFilmSaga({ payload }) {
     const film = yield deleteFilmInDB(payload);
     yield put(deleteFilm(film.id));
   } catch (err) {
-    yield put(handleFilmError(err.message));
+    yield put(setError(err.message));
   }
 }
 
