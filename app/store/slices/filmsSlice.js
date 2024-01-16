@@ -17,6 +17,15 @@ export function* getFilmsSaga() {
   }
 }
 
+export function* addFilmSaga({ payload }) {
+  try {
+    const newFilm = yield addFilmToDB(payload);
+    yield put(addNewFilm(newFilm));
+  } catch (err) {
+    yield put(handleFilmError(err.message));
+  }
+}
+
 // export const fetchFilms = createAsyncThunk(
 //   "films/fetchFilms",
 //   async (_, { rejectWithValue, dispatch }) => {
@@ -29,17 +38,17 @@ export function* getFilmsSaga() {
 //   }
 // );
 
-export const addNewFilm = createAsyncThunk(
-  "films/addNewFilm",
-  async (data, { rejectWithValue, dispatch }) => {
-    try {
-      const newFilm = await addFilmToDB(data);
-      dispatch(addFilm(newFilm));
-    } catch (err) {
-      return rejectWithValue(err.message);
-    }
-  }
-);
+// export const addNewFilm = createAsyncThunk(
+//   "films/addNewFilm",
+//   async (data, { rejectWithValue, dispatch }) => {
+//     try {
+//       const newFilm = await addFilmToDB(data);
+//       dispatch(addFilm(newFilm));
+//     } catch (err) {
+//       return rejectWithValue(err.message);
+//     }
+//   }
+// );
 
 export const editExistFilm = createAsyncThunk(
   "films/editExistFilm",
@@ -77,7 +86,7 @@ const filmsSlice = createSlice({
     setFilms(state, { payload }) {
       state.entities = payload;
     },
-    addFilm(state, { payload }) {
+    addNewFilm(state, { payload }) {
       state.entities.push(payload);
     },
     setPreview(state, { payload }) {
@@ -124,9 +133,12 @@ const filmsSlice = createSlice({
 export const GET_FILMS = "films/getFilms";
 export const getFilms = createAction(GET_FILMS);
 
+export const ADD_FILM = "films/addFilm";
+export const addFilm = createAction(ADD_FILM);
+
 export const {
   setFilms,
-  addFilm,
+  addNewFilm,
   setPreview,
   editFilm,
   deleteFilm,

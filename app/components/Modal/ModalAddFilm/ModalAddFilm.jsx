@@ -1,5 +1,5 @@
 "use client";
-import { addNewFilm } from "store/slices/filmsSlice";
+import { addFilm } from "store/slices/filmsSlice";
 import { closeModal } from "store/slices/modalsSlice";
 import { useSelector } from "react-redux";
 import { selectModals } from "store/selectors";
@@ -18,7 +18,7 @@ export default function ModalAddFilm() {
       year: data.year,
       poster: data.poster,
     };
-    dispatch(addNewFilm(newFilm));
+    dispatch(addFilm(newFilm));
     dispatch(closeModal());
   }
 
