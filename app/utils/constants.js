@@ -29,3 +29,9 @@ export const FAILED_FETCH = "Failed to fetch data";
 export const FAILED_ADD = "Can\'t add film. Server error.";
 export const FAILED_EDIT = "Can\'t edit film. Server error.";
 export const FAILED_DELETE = "Can\'t delete film. Server error.";
+
+/**Actions */
+export const GET_FILMS = "films/getFilms";
+export const ADD_FILM = "films/addFilm";
+export const EDIT_EXIST_FILM = "films/editExistFilm";
+export const DELETE_EXIST_FILM = "films/deleteExistFilm";

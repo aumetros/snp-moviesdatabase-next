@@ -8,13 +8,6 @@
       "poster": "https://moviebot.ru/reductor.php?file=aHR0cHM6Ly9pbWFnZS50bWRiLm9yZy90L3Avdzc4MC83b29RZm4xOTRHejRZd0puM2hRajhNUE1XQlEuanBn"
     },
     {
-      "id": "b_MZClNe83q0QbVBRHXzz",
-      "title": "Робокоп 2",
-      "director": "Ирвин Кершнер",
-      "year": "1990",
-      "poster": "https://images.justwatch.com/poster/178293878/s718/robocop-2.%7Bformat%7D"
-    },
-    {
       "id": "JNbzlm8IwGYlUFr90TxIK",
       "title": "Алладин",
       "director": " Рон Клементс, Джон Маскер",
@@ -83,6 +76,13 @@
       "director": "Рон Ховард",
       "year": "2006",
       "poster": "https://images.justwatch.com/poster/255490216/s718/the-da-vinci-code.jpg"
+    },
+    {
+      "id": "e731",
+      "title": "Белые люди не умеют прыгать",
+      "director": "Рон Шелтон",
+      "year": "1992",
+      "poster": "https://avatars.mds.yandex.net/get-kinopoisk-image/1704946/c48b6d6c-3c79-4754-b714-84413f618839/1920x"
     }
   ]
 }
