@@ -1,18 +1,33 @@
 "use client";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { addFilmToDB, editFilmInDB, deleteFilmInDB, getFilms } from "utils/api";
+import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
+import {
+  addFilmToDB,
+  editFilmInDB,
+  deleteFilmInDB,
+  getFilmsApi,
+} from "utils/api";
+import { put } from "redux-saga/effects";
 
-export const fetchFilms = createAsyncThunk(
-  "films/fetchFilms",
-  async (_, { rejectWithValue, dispatch }) => {
-    try {
-      const films = await getFilms();
-      dispatch(setFilms(films));
-    } catch (err) {
-      return rejectWithValue(err.message);
-    }
+export function* getFilmsSaga() {
+  try {
+    const films = yield getFilmsApi();
+    yield put(setFilms(films));
+  } catch (err) {
+    yield put(handleFilmError(err.message));
   }
-);
+}
+
+// export const fetchFilms = createAsyncThunk(
+//   "films/fetchFilms",
+//   async (_, { rejectWithValue, dispatch }) => {
+//     try {
+//       const films = await getFilms();
+//       dispatch(setFilms(films));
+//     } catch (err) {
+//       return rejectWithValue(err.message);
+//     }
+//   }
+// );
 
 export const addNewFilm = createAsyncThunk(
   "films/addNewFilm",
@@ -86,24 +101,36 @@ const filmsSlice = createSlice({
     deleteFilm(state, { payload }) {
       state.entities = state.entities.filter((film) => film.id !== payload);
     },
+    handleFilmError(state, { payload }) {
+      console.log(payload);
+    },
   },
-  extraReducers: (builder) => {
-    builder.addCase(fetchFilms.rejected, (state, { payload }) => {
-      return { message: payload };
-    });
-    builder.addCase(addNewFilm.rejected, (state, { payload }) => {
-      return { message: payload };
-    });
-    builder.addCase(editExistFilm.rejected, (state, { payload }) => {
-      return { message: payload };
-    });
-    builder.addCase(deleteExistFilm.rejected, (state, { payload }) => {
-      return { message: payload };
-    });
-  },
+  // extraReducers: (builder) => {
+  //   // builder.addCase(fetchFilms.rejected, (state, { payload }) => {
+  //   //   return { message: payload };
+  //   // });
+  //   builder.addCase(addNewFilm.rejected, (state, { payload }) => {
+  //     return { message: payload };
+  //   });
+  //   builder.addCase(editExistFilm.rejected, (state, { payload }) => {
+  //     return { message: payload };
+  //   });
+  //   builder.addCase(deleteExistFilm.rejected, (state, { payload }) => {
+  //     return { message: payload };
+  //   });
+  // },
 });
 
-export const { setFilms, addFilm, setPreview, editFilm, deleteFilm } =
-  filmsSlice.actions;
+export const GET_FILMS = "films/getFilms";
+export const getFilms = createAction(GET_FILMS);
+
+export const {
+  setFilms,
+  addFilm,
+  setPreview,
+  editFilm,
+  deleteFilm,
+  handleFilmError,
+} = filmsSlice.actions;
 
 export default filmsSlice.reducer;

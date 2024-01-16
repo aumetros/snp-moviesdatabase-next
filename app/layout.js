@@ -6,7 +6,7 @@ import Footer from "components/Footer";
 import ModalAddFilm from "components/Modal/ModalAddFilm";
 import ModalPreviewFilm from "components/Modal/ModalPreviewFilm";
 import ModalEditFilm from "components/Modal/ModalEditFilm";
-import StoreProvider from "store/StoreProvider";
+import { StoreProvider } from "store/StoreProvider";
 
 const openSans = Open_Sans({
   weight: ["400", "500", "700"],

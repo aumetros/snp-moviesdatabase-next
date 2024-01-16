@@ -1,15 +1,27 @@
 "use client";
+import createSagaMiddleware from "redux-saga";
+import { takeEvery } from "redux-saga/effects";
 import { configureStore } from "@reduxjs/toolkit";
-import filmsReducer from "./slices/filmsSlice.js";
+import filmsReducer, { GET_FILMS, getFilmsSaga } from "./slices/filmsSlice.js";
 import modalsReducer from "./slices/modalsSlice.js";
 import filtersReducer from "./slices/filtersSlice.js";
 
-export const makeStore = () => {
-  return configureStore({
-    reducer: {
-      films: filmsReducer,
-      modals: modalsReducer,
-      filters: filtersReducer,
-    },
-  });
-};
+const sagaMiddleware = createSagaMiddleware();
+
+function* sagas() {
+  yield takeEvery(GET_FILMS, getFilmsSaga);
+}
+
+const store = configureStore({
+  reducer: {
+    films: filmsReducer,
+    modals: modalsReducer,
+    filters: filtersReducer,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware),
+});
+
+sagaMiddleware.run(sagas);
+
+export default store;

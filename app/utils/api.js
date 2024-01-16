@@ -13,7 +13,7 @@ function checkResponse(res, message) {
   return res.json();
 }
 
-export async function getFilms() {
+export async function getFilmsApi() {
   const res = await fetch(`${DB_LINK}/films`);
 
   return checkResponse(res, FAILED_FETCH);
