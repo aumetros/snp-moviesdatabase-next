@@ -1,5 +1,5 @@
 "use client";
-import { createSlice, createAsyncThunk, createAction } from "@reduxjs/toolkit";
+import { createSlice, createAction } from "@reduxjs/toolkit";
 import {
   addFilmToDB,
   editFilmInDB,
@@ -26,53 +26,24 @@ export function* addFilmSaga({ payload }) {
   }
 }
 
-// export const fetchFilms = createAsyncThunk(
-//   "films/fetchFilms",
-//   async (_, { rejectWithValue, dispatch }) => {
-//     try {
-//       const films = await getFilms();
-//       dispatch(setFilms(films));
-//     } catch (err) {
-//       return rejectWithValue(err.message);
-//     }
-//   }
-// );
-
-// export const addNewFilm = createAsyncThunk(
-//   "films/addNewFilm",
-//   async (data, { rejectWithValue, dispatch }) => {
-//     try {
-//       const newFilm = await addFilmToDB(data);
-//       dispatch(addFilm(newFilm));
-//     } catch (err) {
-//       return rejectWithValue(err.message);
-//     }
-//   }
-// );
-
-export const editExistFilm = createAsyncThunk(
-  "films/editExistFilm",
-  async ({ filmId, data }, { rejectWithValue, dispatch }) => {
-    try {
-      const film = await editFilmInDB({ filmId, data });
-      dispatch(editFilm({ filmId: film.id, data }));
-    } catch (err) {
-      return rejectWithValue(err.message);
-    }
+export function* editFilmSaga({ payload }) {
+  const { filmId, data } = payload;
+  try {
+    const film = yield editFilmInDB({ filmId, data });
+    yield put(editFilm({ filmId: film.id, data }));
+  } catch (err) {
+    yield put(handleFilmError(err.message));
   }
-);
+}
 
-export const deleteExistFilm = createAsyncThunk(
-  "films/deleteExistFilm",
-  async (filmId, { rejectWithValue, dispatch }) => {
-    try {
-      const film = await deleteFilmInDB(filmId);
-      dispatch(deleteFilm(film.id));
-    } catch (err) {
-      return rejectWithValue(err.message);
-    }
+export function* deleteFilmSaga({ payload }) {
+  try {
+    const film = yield deleteFilmInDB(payload);
+    yield put(deleteFilm(film.id));
+  } catch (err) {
+    yield put(handleFilmError(err.message));
   }
-);
+}
 
 const initialState = {
   entities: [],
@@ -114,20 +85,6 @@ const filmsSlice = createSlice({
       console.log(payload);
     },
   },
-  // extraReducers: (builder) => {
-  //   // builder.addCase(fetchFilms.rejected, (state, { payload }) => {
-  //   //   return { message: payload };
-  //   // });
-  //   builder.addCase(addNewFilm.rejected, (state, { payload }) => {
-  //     return { message: payload };
-  //   });
-  //   builder.addCase(editExistFilm.rejected, (state, { payload }) => {
-  //     return { message: payload };
-  //   });
-  //   builder.addCase(deleteExistFilm.rejected, (state, { payload }) => {
-  //     return { message: payload };
-  //   });
-  // },
 });
 
 export const GET_FILMS = "films/getFilms";
@@ -135,6 +92,12 @@ export const getFilms = createAction(GET_FILMS);
 
 export const ADD_FILM = "films/addFilm";
 export const addFilm = createAction(ADD_FILM);
+
+export const EDIT_EXIST_FILM = "films/editExistFilm";
+export const editExistFilm = createAction(EDIT_EXIST_FILM);
+
+export const DELETE_EXIST_FILM = "films/deleteExistFilm";
+export const deleteExistFilm = createAction(DELETE_EXIST_FILM);
 
 export const {
   setFilms,

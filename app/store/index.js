@@ -7,6 +7,10 @@ import filmsReducer, {
   getFilmsSaga,
   ADD_FILM,
   addFilmSaga,
+  EDIT_EXIST_FILM,
+  editFilmSaga,
+  DELETE_EXIST_FILM,
+  deleteFilmSaga,
 } from "./slices/filmsSlice.js";
 import modalsReducer from "./slices/modalsSlice.js";
 import filtersReducer from "./slices/filtersSlice.js";
@@ -16,6 +20,8 @@ const sagaMiddleware = createSagaMiddleware();
 function* sagas() {
   yield takeEvery(GET_FILMS, getFilmsSaga);
   yield takeEvery(ADD_FILM, addFilmSaga);
+  yield takeEvery(EDIT_EXIST_FILM, editFilmSaga);
+  yield takeEvery(DELETE_EXIST_FILM, deleteFilmSaga);
 }
 
 const store = configureStore({
