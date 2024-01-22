@@ -2,8 +2,7 @@
 ## Автор: Шевляков Алексей
 ## (Salt & Pepper Interns - Направление Frontend разработка)
 
-**Технологический стек**
-
+**Технологический стек**  
 Ветка _main_:  
 Next.js 13, Redux Toolkit, Sass, LocalStorage, React Hook Form, React Router v6.
 
@@ -20,8 +19,7 @@ Next.js 13, Redux Toolkit, Sass, React Hook Form, React Router v6, REST API, JSO
 * Удаление фильма;
 * Переход на страницу фильма;
 
-**Использованные методы**
-
+**Использованные методы**  
 Проектная работа создана для отработки следующих технологий и методов:
 * Фреймворк Next.js 13.
 * Стилизация компонетов с помощью Sass.
