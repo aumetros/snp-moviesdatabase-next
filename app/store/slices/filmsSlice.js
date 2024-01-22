@@ -1,5 +1,11 @@
 "use client";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAction } from "@reduxjs/toolkit";
+import {
+  GET_FILMS,
+  ADD_FILM,
+  EDIT_EXIST_FILM,
+  DELETE_EXIST_FILM,
+} from "utils/constants";
 
 const initialState = {
   entities: [],
@@ -11,11 +17,10 @@ const filmsSlice = createSlice({
   initialState,
   reducers: {
     setFilms(state, { payload }) {
-      state.entities = payload.entities;
+      state.entities = payload;
     },
-    addFilm(state, { payload }) {
+    addNewFilm(state, { payload }) {
       state.entities.push(payload);
-      localStorage.setItem("filmsState", JSON.stringify(state));
     },
     setPreview(state, { payload }) {
       state.preview = payload;
@@ -34,21 +39,28 @@ const filmsSlice = createSlice({
         }
         return film;
       });
-      localStorage.setItem("filmsState", JSON.stringify(state));
     },
     deleteFilm(state, { payload }) {
       state.entities = state.entities.filter((film) => film.id !== payload);
-      localStorage.setItem("filmsState", JSON.stringify(state));
+    },
+    handleFilmError(state, { payload }) {
+      console.log(payload);
     },
   },
 });
 
+export const getFilms = createAction(GET_FILMS);
+export const addFilm = createAction(ADD_FILM);
+export const editExistFilm = createAction(EDIT_EXIST_FILM);
+export const deleteExistFilm = createAction(DELETE_EXIST_FILM);
+
 export const {
   setFilms,
-  addFilm,
+  addNewFilm,
   setPreview,
   editFilm,
   deleteFilm,
+  handleFilmError,
 } = filmsSlice.actions;
 
 export default filmsSlice.reducer;

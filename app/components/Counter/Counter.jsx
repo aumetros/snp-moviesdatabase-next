@@ -2,18 +2,15 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectFilms } from "store/selectors";
-import { setFilms } from "store/slices/filmsSlice";
+import { getFilms } from "store/slices/filmsSlice";
 
 export default function Counter() {
+  const films = useSelector(selectFilms);
   const dispatch = useDispatch();
 
-  const films = useSelector(selectFilms);
-
   React.useEffect(() => {
-    if (localStorage.getItem("filmsState") !== null) {
-      dispatch(setFilms(JSON.parse(localStorage.getItem("filmsState"))));
-    }
+    dispatch(getFilms());
   }, [dispatch]);
 
-  return <>{films.length || 0}</>;
+  return <>{films?.length || 0}</>;
 }

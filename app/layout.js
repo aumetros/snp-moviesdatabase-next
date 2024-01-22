@@ -22,7 +22,7 @@ export const metadata = {
   author: "Алексей Шевляков",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
   return (
     <html lang="ru">
       <body className={openSans.className}>
