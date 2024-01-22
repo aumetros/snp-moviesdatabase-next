@@ -4,7 +4,11 @@
 
 **Технологический стек**
 
-Next.js 13, Redux Toolkit, Sass, LocalStorage, React Hook Form
+Ветка _main_:
+Next.js 13, Redux Toolkit, Sass, LocalStorage, React Hook Form, React Router v6.
+
+Ветка _feature/rest_api_:
+Next.js 13, Redux Toolkit, Sass, React Hook Form, React Router v6, REST API, JSON server, Redux Saga.
 
 ### Обзор проекта
 Данный проект представляет собой веб-приложение "Movies Database". Данное приложение реализовано c помощью фреймворка Next.js 13, управление состоянием приложения реализовано с помощью Redux Toolkit.
@@ -14,6 +18,7 @@ Next.js 13, Redux Toolkit, Sass, LocalStorage, React Hook Form
 * Быстрый просмотр данных фильма в модальном окне;
 * Редактирование данных фильма;
 * Удаление фильма;
+* Переход на страницу фильма;
 
 **Использованные методы**
 
@@ -24,7 +29,10 @@ Next.js 13, Redux Toolkit, Sass, LocalStorage, React Hook Form
 * Управление состоянием приложения с помощью пакета Redux Toolkit.
 * Обработка и валидации формы с помощью React Hook Form.
 * Состояние приложения сохраняется в localStorage с помощью мидлвары.
+* Роутинг по приложению c помощью React Router v6.
+* REST API запросы.
+* Работа с асинхронными запросами с помощью Thunk и Redux Saga.
 
 **Ссылка на проект - Vercel:** https://snp-moviesdatabase-next.vercel.app  
 
-*декабрь 2023г*
+*январь 2024г*
