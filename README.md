@@ -4,10 +4,10 @@
 
 **Технологический стек**
 
-Ветка _main_:
+Ветка _main_:  
 Next.js 13, Redux Toolkit, Sass, LocalStorage, React Hook Form, React Router v6.
 
-Ветка _feature/rest_api_:
+Ветка _feature/rest_api_:  
 Next.js 13, Redux Toolkit, Sass, React Hook Form, React Router v6, REST API, JSON server, Redux Saga.
 
 ### Обзор проекта
